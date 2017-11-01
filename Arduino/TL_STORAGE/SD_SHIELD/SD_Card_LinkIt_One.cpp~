@@ -1,0 +1,77 @@
+#include "SD_Card_LinkIt_One.h"
+
+SD_Card::SD_Card()
+{
+  TL_File myFile;
+}
+
+char* SD_Card::StoC(String s){
+  char* res = (char*)malloc(sizeof(char)*sizeof(s));
+  s.toCharArray(res,sizeof(s));
+  return res;
+}
+
+bool SD_Card::begin()
+{
+  pinMode(10, OUTPUT);
+  Drv.begin();
+  return true;
+}
+
+bool SD_Card::exists(String path){
+  char* temp = StoC(path);
+  if(Drv.exists(temp)){
+    free(temp);
+    return true;
+  }else{
+    free(temp);
+    return false;
+  }
+}
+
+bool SD_Card::mkdir(String path){
+  char* temp = StoC(path);
+  if(Drv.mkdir(temp)){
+    free(temp);
+    return true;
+  }else{
+    free(temp);
+    return false;
+  }
+}
+
+bool SD_Card::rmdir(String path){
+  char* temp = StoC(path);
+  if(Drv.rmdir(temp)){
+    free(temp);
+    return true;
+  }else{
+    free(temp);
+    return false;
+  }
+}
+
+bool SD_Card::remove(String path){
+  char* temp = StoC(path);
+  if(Drv.remove(temp)){
+    free(temp);
+    return true;
+  }else{
+    free(temp);
+    return false;
+  }
+}
+
+
+TL_File SD_Card::open(String path, String mode)
+{
+  char pathStr[128];
+  path.toCharArray(pathStr, 127);
+  if(mode == "w"){
+    Drv.remove(pathStr);
+  }
+  myFile = Drv.open(pathStr, (mode == "w" ? 0x13 : 0x01));
+  return myFile;
+}
+
+SD_Card TL_Storage;

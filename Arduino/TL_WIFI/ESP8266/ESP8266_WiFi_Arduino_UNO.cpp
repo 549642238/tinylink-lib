@@ -1,0 +1,357 @@
+#include "ESP8266_WiFi_Arduino_UNO.h"
+
+#if WIFI_UART_TX == 0 && WIFI_UART_RX == 1
+	#if WIFI_UART_TX == 0 && WIFI_UART_RX == 1 // (UTX, URX) = (0, 1)
+		#define ESP_WiFi Serial
+	#else
+		#pragma message("Error: UART RX and TX are not consecutive!")
+	#endif
+#else
+	SoftwareSerial ESP_WiFi(WIFI_UART_TX, WIFI_UART_RX);
+#endif
+
+//SoftwareSerial ESP_WiFi(2, 3);
+
+
+//WiFi driver
+ESP8266_WiFi::ESP8266_WiFi(){
+	status = WL_IDLE_STATUS;
+}
+
+bool ESP8266_WiFi::init(){
+	ESP_WiFi.begin(9600);
+	WiFi.init(&ESP_WiFi);
+	return true;
+}
+
+bool ESP8266_WiFi::join(String& SSID, const String& PASSWD){
+	char* _SSID = (char*)malloc(sizeof(char)*(SSID.length()+1));
+	SSID.toCharArray(_SSID, SSID.length()+1);
+	char* _PASSWD = (char*)malloc(sizeof(char)*(PASSWD.length()+1));
+	PASSWD.toCharArray(_PASSWD, PASSWD.length()+1);
+	bool res = join(_SSID, _PASSWD);
+	free(_SSID);
+	free(_PASSWD);
+	return res;
+}
+
+bool ESP8266_WiFi::join(char* SSID, const char* PASSWD){
+	unsigned long start = millis();
+	while (status != WL_CONNECTED && millis() - start < 8000){
+		status = WiFi.begin(SSID, PASSWD);
+		delay(500);
+	}
+	if (status == WL_CONNECTED){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+bool ESP8266_WiFi::disjoin(){
+	if(WiFi.disconnect() == WL_DISCONNECTED){
+		return true;	
+	}else{
+		return false;
+	}
+}
+
+ESP8266_HTTP& ESP8266_WiFi::fetchHTTP(){
+	static ESP8266_HTTP espHttp;
+	return espHttp;
+}
+
+ESP8266_MQTT& ESP8266_WiFi::fetchMQTT(){
+	static ESP8266_MQTT espMQTT;
+	return espMQTT;
+}
+
+
+// HTTP Client
+ESP8266_HTTP::ESP8266_HTTP(){
+	espClient = new WiFiEspClient();
+}
+
+bool ESP8266_HTTP::parseURL(const char* url, char* host, char* para){
+	const char *uPtr = url;
+	char  *_host, *_para;
+	_host = host;
+	_para = para;
+	int state = 0;
+	while (*uPtr != '\0'){
+		if (state == 0 || state == 1){
+			*_host = *uPtr;
+			_host++;
+		}
+		if (*uPtr == '/'){
+			if (state == 1 && *(uPtr - 1) != '/'){
+				*(_host - 1) = '\0';
+				state = 2;
+			}
+			if (state == 0) // first /
+			{
+				if (*(uPtr + 1) == '/') // first //, indicating http://
+				{
+					if (_host != host){
+						_host = host;
+					}
+					state = 1;
+					uPtr++;
+				}else  // indicating no http://, just the hostname
+				{
+					*(_host - 1)= '\0';
+					state = 2;
+				}
+			}
+		}
+		if (state == 2){
+			*_para = *uPtr;
+			_para++;
+		}
+		uPtr++;
+	}
+	*_para = '\0';
+	if (state == 2){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+bool ESP8266_HTTP::get(const String& url){
+	char* _url = (char*)malloc(sizeof(char)*(url.length()+1));
+	url.toCharArray(_url, url.length()+1);
+	bool res = get(_url);
+	free(_url);
+	return res;
+}
+
+bool ESP8266_HTTP::get(const char* url){
+	char host[32], para[120];
+	response = String();
+	if (parseURL(url, host, para) == false){
+		return false;
+	}
+	char paraStr[200];
+	sprintf(paraStr,"GET %s HTTP/1.1\r\nHost:%s\r\n\r\n",para,host);
+	if(!espClient->connected()){
+		int res = espClient->connect(host, 80);
+		if(!res){
+			return false;
+		}
+	}
+	espClient->print(paraStr);
+	return true;
+}
+
+bool ESP8266_HTTP::post(const String& url, const String& data){
+	char* _url = (char*)malloc(sizeof(char)*(url.length()+1));
+	url.toCharArray(_url, url.length()+1);
+	char* _data = (char*)malloc(sizeof(char)*(data.length()+1));
+	data.toCharArray(_data, data.length()+1);
+	bool res = post(_url,_data);
+	free(_url);
+	free(_data);
+	return res;
+}
+
+bool ESP8266_HTTP::post(const char* url, const char* data){
+ 	char host[32], para[120];
+	response = String();
+	if (parseURL(url, host, para) == false){
+		return false;
+	}
+	char paraStr[200];
+	sprintf(paraStr,"POST %s HTTP/1.1\r\nHost:%s\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length:%d\r\n\r\n%s\r\n\r\n",para,host,strlen(data),data);
+	if(!espClient->connected()){
+		int res = espClient->connect(host, 80);
+		if(!res){
+			return false;
+		}
+	}
+	espClient->print(paraStr);
+	return true;
+}
+
+String ESP8266_HTTP::getResponse(){
+	return response;
+}
+
+
+// MQTT Client
+ESP8266_MQTT::ESP8266_MQTT(){
+}
+/*
+ESP8266_MQTT::~ESP8266_MQTT(){
+	free(client);
+	free(ipstack);
+	free(tcpClient);
+	free(_serverName);
+	free(_clientName);
+	free(_userName);
+	free(_password);
+}
+*/
+/*
+int ESP8266_MQTT::connect(const String serverName, const int port, const String clientName, const String userName, const String password){
+	int __port = port;
+	char* __serverName = (char*)malloc(sizeof(char)*(serverName.length()+1));
+	serverName.toCharArray(__serverName, serverName.length()+1);
+	char* __clientName = (char*)malloc(sizeof(char)*(clientName.length()+1));
+	clientName.toCharArray(__clientName, clientName.length()+1);
+	char* __userName = (char*)malloc(sizeof(char)*(userName.length()+1));
+	userName.toCharArray(__userName, userName.length()+1);
+	char* __password = (char*)malloc(sizeof(char)*(password.length()+1));
+	password.toCharArray(__password, password.length()+1);
+	int res = connect(__serverName, __port, __clientName, __userName, __password);
+	free(__serverName);
+	free(__clientName);
+	free(__userName);
+	free(__password);
+	return res;
+}
+*/
+int ESP8266_MQTT::connect(char* serverName, int port, char* clientName, char* userName, char* password){
+	_port = port;
+	_serverName = (char*)malloc(sizeof(char)*(strlen(serverName)+1));
+	strcpy(_serverName, serverName);
+	_clientName = (char*)malloc(sizeof(char)*(strlen(clientName)+1));
+	strcpy(_clientName, clientName);
+	_userName =(char*)malloc(sizeof(char)*(strlen(userName)+1));
+	strcpy(_userName, userName);
+	_password = (char*)malloc(sizeof(char)*(strlen(password)+1));
+	strcpy(_password, password);
+	tcpClient = new WiFiEspClient();
+	ipstack = new IPStack(*tcpClient);
+	client = new MQTT::Client<IPStack, Countdown, 140>(*ipstack);
+	if(!client->isConnected()){
+		int rc = ipstack->connect(_serverName, _port);
+		if (rc != 1){
+			return rc;
+		}
+		MQTTPacket_connectData data = MQTTPacket_connectData_initializer;       
+		data.MQTTVersion = 4;
+		data.clientID.cstring = _clientName;
+		data.username.cstring = _userName;
+		data.password.cstring = _password;
+		rc = client->connect(data);
+		return rc;
+	}else{
+		return 0;
+	}
+}
+
+int ESP8266_MQTT::reconnect(){
+	if(!client->isConnected()){
+		int rc = ipstack->connect(_serverName, _port);
+		if (rc != 1){
+			return rc;
+		}
+		MQTTPacket_connectData data = MQTTPacket_connectData_initializer;       
+		data.MQTTVersion = 4;
+		data.clientID.cstring = _clientName;
+		data.username.cstring = _userName;
+		data.password.cstring = _password;
+		rc = client->connect(data);
+		return rc;
+	}else{
+		return 0;
+	}
+}
+
+int ESP8266_MQTT::disconnect(){
+	return client->disconnect();
+}
+
+bool ESP8266_MQTT::isConnected(){
+	return client->isConnected();
+}
+
+/*
+int ESP8266_MQTT::publish(const String& topicName, const String& data, int length, int qos){
+	char* _topicName = (char*)malloc(sizeof(char)*(topicName.length()+1));
+	topicName.toCharArray(_topicName, topicName.length()+1);
+	char* _data = (char*)malloc(sizeof(char)*(data.length()+1));
+	data.toCharArray(_data, data.length()+1);
+	int res = publish(_topicName, _data, qos);
+	free(_topicName);
+	free(_data);
+	return res;
+}
+*/
+int ESP8266_MQTT::publish(const char* topicName, char* data, int length, int qos){
+	if(reconnect()!=0){
+		return -1;
+	}
+	MQTT::Message message;
+	message.retained = false;
+	message.dup = false;
+	switch(qos){
+		case 1:{
+			message.qos = MQTT::QOS1;
+			break;
+		}
+		case 2:{
+			message.qos = MQTT::QOS2;
+			break;
+		}
+		default:{
+			message.qos = MQTT::QOS0;
+			break;
+		}
+	}
+	message.payload = (void*)data;
+	message.payloadlen = length;
+	int res = client->publish(topicName, message);
+	return res;
+}
+/*
+int ESP8266_MQTT::publish(const String& topicName, MQTT::Message& message){
+	char* _topicName = (char*)malloc(sizeof(char)*(topicName.length()+1));
+	topicName.toCharArray(_topicName, topicName.length()+1);
+	message.retained = false;
+	message.dup = false;
+	if(reconnect() !=0 ){
+		return -1;
+	}
+	int res = client->publish(_topicName, message);
+	free(_topicName);
+	return res;
+}
+
+int ESP8266_MQTT::publish(const char* topicName, MQTT::Message& message){
+	message.retained = false;
+	message.dup = false;	
+	if(reconnect() !=0 ){
+		return -1;
+	}
+	return client->publish(topicName, message);
+}
+*/
+int ESP8266_MQTT::subscribe(const char* topicFilter, MQTT::Client<IPStack, Countdown>::messageHandler mh, int qos){
+	if(reconnect()!=0){
+		return -1;
+	}
+	MQTT::QoS Qos;
+	switch(qos){
+		case 1:{
+			Qos = MQTT::QOS1;
+			break;
+		}
+		case 2:{
+			Qos = MQTT::QOS2;
+			break;
+		}
+		default:{
+			Qos = MQTT::QOS0;
+			break;
+		}
+	}
+	return client->subscribe(topicFilter, Qos, mh);
+}
+
+int ESP8266_MQTT::unsubscribe(const char* topicFilter){
+	return client->unsubscribe(topicFilter);
+}
+
+ESP8266_WiFi TL_WiFi;

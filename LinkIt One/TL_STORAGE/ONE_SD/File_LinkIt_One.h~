@@ -1,0 +1,13 @@
+#ifndef TL_FILE_H
+#define TL_FILE_H
+
+#if STORAGE == SD_SHIELD//component
+  #if BOARD == 1002
+    #define TL_File File
+  #endif
+#elif STORAGE == ONE_SD
+  #if BOARD == 1001
+    #define TL_File LFile
+  #endif
+#endif
+#endif

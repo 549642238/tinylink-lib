@@ -1,0 +1,19 @@
+#ifndef TL_WIFI_H
+#define TL_WIFI_H
+
+#if WIFI == ESP8266  //component
+  #if BOARD == 1002
+    #include "ESP8266_WiFi_Arduino_UNO.h"
+    #include "ESP8266_WiFi_Arduino_UNO.cpp"
+  #elif BOARD == 1001
+    #include "ESP8266_WiFi_LinkIt_One.h"
+    #include "ESP8266_WiFi_LinkIt_One.cpp"
+  #endif
+#elif WIFI == ONE_WIFI
+  #if BOARD == 1001
+    #include "Internal_WiFi_LinkIt_One.h"
+    #include "Internal_WiFi_LinkIt_One.cpp"
+  #endif
+#endif
+
+#endif

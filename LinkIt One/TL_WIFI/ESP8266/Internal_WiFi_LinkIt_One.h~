@@ -1,0 +1,31 @@
+#ifndef INTERNAL_WIFI_LINKIT_ONE_H
+#define INTERNAL_WIFI_LINKIT_ONE_H
+
+#include <Arduino.h>
+#include <LWiFi.h>
+#include <LWiFiClient.h>
+#include "TL_Config.h"
+
+#define WIFI_AUTH LWIFI_WPA
+
+class Internal_WiFi
+{
+
+private:
+	bool parseURL(const char* url, char* host, char* para);
+	LWiFiClient c;
+public:
+	Internal_WiFi(){}
+	bool init();
+  	bool join(const String& SSID, const String& PASSWD);
+  	bool join(const char* SSID, const char* PASSWD);
+  	bool disjoin();
+  	bool get(const String& url);
+  	bool get(const char *url);
+  	//bool post(const String& url, const String& data);
+  	//bool post(const char* url, const char* data);
+};
+
+extern Internal_WiFi TL_WiFi;
+
+#endif

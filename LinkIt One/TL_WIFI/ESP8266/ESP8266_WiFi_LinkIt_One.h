@@ -1,0 +1,69 @@
+#ifndef ESP8266_WIFI_LINKIT_ONE_H
+#define ESP8266_WIFI_LINKIT_ONE_H
+
+#include <Arduino.h>
+#include "TL_Config.h"
+#include <IPStack.h>
+#include <Countdown.h>
+#include <WiFiEsp.h>
+#include <WiFiEspClient.h>
+#include <MQTTClient.h>
+
+
+// HTPP client based on ESP8266 device
+class ESP8266_HTTP{
+private:
+	String response;
+	bool parseURL(const char* url, char* host, char* para);
+public:
+	ESP8266_HTTP();
+	bool get(const String& url);
+	bool get(const char *url);
+	bool post(const String& url, const String& data);
+	bool post(const char* url, const char* data);
+	String getResponse();
+};
+
+// MQTT client based on ESP8266 device
+class ESP8266_MQTT{
+private:
+	char* _serverName, *_clientName, *_userName, *_password;
+	int _port;
+	IPStack *ipstack;
+	MQTT::Client<IPStack, Countdown> *client;
+public:
+	ESP8266_MQTT();
+	bool connect(char* serverName, int port, char* clientName, char* userName="", char* password="");	// 1 for success
+	//int connect(const String serverName, const int port, const String clientName, const String userName="", const String password="");
+	bool reconnect();											// 1 for success
+	bool disconnect();											// 1 for success
+	bool isConnected();											// 1 for success
+	//int publish(const String& topicName, MQTT::Message& message);						// 1 for success
+	//int publish(const char* topicName, MQTT::Message& message);
+	bool publish(const char* topicName, char* data, int qos=0);
+	//int publish(const String& topicName, const String& data);
+	bool subscribe(const char* topicFilter, MQTT::Client<IPStack, Countdown>::messageHandler mh, int qos=0);	// 1 for success
+	bool unsubscribe(const char* topicFilter);							// 1 for success
+};
+
+
+// ESP8266 device function
+class ESP8266_WiFi{
+private:
+	int status;
+public:
+	ESP8266_WiFi();
+	bool init();
+	bool join(String& SSID, const String& PASSWD);
+	bool join(char* SSID, const char* PASSWD);
+	bool disjoin();
+	ESP8266_MQTT& fetchMQTT();
+	ESP8266_HTTP& fetchHTTP();
+};
+
+typedef ESP8266_HTTP TL_HTTP;
+typedef ESP8266_MQTT TL_MQTT;
+
+extern ESP8266_WiFi TL_WiFi;
+
+#endif

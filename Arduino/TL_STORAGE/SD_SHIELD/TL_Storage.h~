@@ -1,0 +1,16 @@
+#ifndef TL_SD_H
+#define TL_SD_H
+
+#if STORAGE == SD_SHIELD//component
+  #if BOARD == 1002
+    #include "SD_Card_Arduino_UNO.h"
+    #include "SD_Card_Arduino_UNO.cpp"
+  #endif
+#elif STORAGE == ONE_SD
+  #if BOARD == 1001
+    #include "Internal_SD_LinkIt_One.h"
+    #include "Internal_SD_LinkIt_One.cpp"
+  #endif
+
+#endif
+#endif
