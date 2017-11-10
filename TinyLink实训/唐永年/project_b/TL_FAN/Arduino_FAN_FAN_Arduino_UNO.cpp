@@ -12,15 +12,13 @@ void Internal_FAN::work()
 	while(Serial.available()>0){
 		char ch = Serial.read();
 		if(ch == '\n'){
-			if(res == "on"){
-			digitalWrite(fanPin, HIGH);
-		}else if(res == "off"){
-			digitalWrite(fanPin, LOW);
-		}
-		res = "";
-    }else {
-		res += ch;
-    }
+			if(res == "on")
+				digitalWrite(fanPin, HIGH);
+			else if(res == "off")
+				digitalWrite(fanPin, LOW);
+			res = "";
+		}else 
+			res += ch;
     delay(500);
   }
 }
