@@ -19,8 +19,8 @@ void Internal_FAN::work()
 			res = "";
 		}else 
 			res += ch;
-    delay(500);
-  }
+		delay(500);
+	}
 }
 
 void Internal_FAN::turnOn()
