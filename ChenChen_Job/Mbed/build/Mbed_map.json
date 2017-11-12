@@ -1,0 +1,35 @@
+[
+    {
+        "module": "Fill", 
+        "size": {
+            ".data": 3, 
+            ".bss": 39, 
+            ".text": 106
+        }
+    }, 
+    {
+        "module": "Misc", 
+        "size": {
+            ".data": 141, 
+            ".bss": 1141, 
+            ".text": 32927
+        }
+    }, 
+    {
+        "module": "TARGET_NRF51822/TOOLCHAIN_GCC_ARM", 
+        "size": {
+            ".data": 12, 
+            ".bss": 472, 
+            ".text": 4389
+        }
+    }, 
+    {
+        "summary": {
+            "total_flash": 37578, 
+            "static_ram": 1808, 
+            "stack": 2048, 
+            "heap": 2280, 
+            "total_ram": 6136
+        }
+    }
+]
