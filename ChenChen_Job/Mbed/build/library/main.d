@@ -142,4 +142,7 @@ build\library\main.o: library\main.cpp build\mbed_config.h \
  TinyLink/TL_Config.h TinyLink/TL_Device_ID.h \
  TL_TIME/MBED_TIME/Mbed_Time_Time_Mbed.h TinyLink/TL_Config.h \
  TL_LED/MBED_LED/Mbed_Led_Led_Mbed.h \
- TL_BUTTON/MBED_BUTTON/Mbed_Button_Button_Mbed.h
+ TL_BLUETOOTH/MBED_BLUETOOTH/Mbed_Bluetooth_Bluetooth_Mbed.h \
+ TL_BLUETOOTH/MBED_BLUETOOTH/LEDService.h \
+ TL_BUTTON/MBED_BUTTON/Mbed_Button_Button_Mbed.h \
+ TL_BLUETOOTH/MBED_BLUETOOTH/LEDService.h

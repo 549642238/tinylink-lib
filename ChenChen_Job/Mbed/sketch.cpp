@@ -1,7 +1,7 @@
 #include "TL_Libraries.h"
 
 void setup(){
-	// TL_Bluetooth.init("HEHE");
+	 TL_Bluetooth.init();
 }
 
 void loop(){
@@ -11,6 +11,14 @@ void loop(){
 		TL_LED.turnOn();
 	}
 	else if(TL_BUTTON.read() == RELEASED)
+	{
+		TL_LED.turnOff();
+	}
+	if(LedState == 1)
+	{
+		TL_LED.turnOn();
+	}
+	else 
 	{
 		TL_LED.turnOff();
 	}

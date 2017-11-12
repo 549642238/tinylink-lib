@@ -4,11 +4,11 @@
 #include <stdlib.h>
 #include "mbed.h"
 #include "TL_Config.h"
-	enum {
-    RELEASED = 0,
-    PRESSED,
-    IDLE
-	};
+enum {
+PRESSED = 0,
+RELEASED = 1,
+IDLE
+};
 //构造函数:给成员变量赋值
 class Mbed_Button_Button_T {
 public:

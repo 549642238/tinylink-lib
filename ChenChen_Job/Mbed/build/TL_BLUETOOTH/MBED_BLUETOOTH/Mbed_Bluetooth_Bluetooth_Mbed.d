@@ -105,4 +105,5 @@ build\TL_BLUETOOTH\MBED_BLUETOOTH\Mbed_Bluetooth_Bluetooth_Mbed.o: \
  library/BLE_API/ble/FunctionPointerWithContext.h \
  library/mbed-os/platform/mbed_error.h \
  library/BLE_API/ble/services/UARTService.h library/BLE_API/ble/UUID.h \
- library/BLE_API/ble/BLE.h TinyLink/TL_Config.h TinyLink/TL_Device_ID.h
+ library/BLE_API/ble/BLE.h TinyLink/TL_Config.h TinyLink/TL_Device_ID.h \
+ TL_BLUETOOTH\MBED_BLUETOOTH\LEDService.h

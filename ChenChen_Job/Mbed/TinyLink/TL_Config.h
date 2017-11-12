@@ -7,8 +7,9 @@
 
 #define LED MBED_LED
 #define TIME MBED_TIME
-// #define BLUETOOTH MBED_BLUETOOTH
+#define BLUETOOTH MBED_BLUETOOTH
 #define Accelerometer MBED_MPU6050  //edit by cc
 #define BUTTON MBED_BUTTON
+#define BLE_LED MBED_BLE_LED
 
 #endif

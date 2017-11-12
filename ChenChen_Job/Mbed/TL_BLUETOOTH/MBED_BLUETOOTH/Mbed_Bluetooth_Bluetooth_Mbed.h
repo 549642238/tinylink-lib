@@ -8,53 +8,41 @@
 #include "BLE.h"
 #include "UARTService.h"
 #include "TL_Config.h"
+#include "LEDService.h"
 
 extern int state;
-extern BLEDevice ble;
-
+// extern BLEDevice ble;
+extern uint8_t LedState;
 void connectionCallback(const Gap::ConnectionCallbackParams_t *params);
+void disconnectionCallback(const Gap::DisconnectionCallbackParams_t *params);
+void onDataWrittenCallback(const GattWriteCallbackParams *params);
+void bleInitComplete(BLE::InitializationCompleteCallbackContext *params);
+class Mbed_Bluetooth_Bluetooth_T {
+public:
 
-void disconnectionCallback(const Gap::DisconnectionCallbackParams_t *cbParams);
+	int init(void)
+	{
+		BLE &ble = BLE::Instance();
+		ble.init(bleInitComplete);
+ 		// ble.init();
+		// ble.gap().onDisconnection(disconnectionCallback);
+		// ble.gattServer().onDataWritten(onDataWrittenCallback);
 
-struct Mbed_Bluetooth_Bluetooth{
-	//UARTService* uartService;
-	Mbed_Bluetooth_Bluetooth(){
-	}
-	int init(char* name){
-		ble.init();
-		ble.gap().onDisconnection(disconnectionCallback);
-		ble.gap().onConnection(connectionCallback);
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED);
-		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::SHORTENED_LOCAL_NAME, (const uint8_t *)name, sizeof(name));
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_128BIT_SERVICE_IDS, (const uint8_t *)UARTServiceUUID_reversed, sizeof(UARTServiceUUID_reversed));
-		ble.setAdvertisingInterval(160);
-		ble.gap().startAdvertising();
-		//uartService = new UARTService(ble);
+		// bool initialValueForLEDCharacteristic = false;
+		// ledServicePtr = new LEDService(ble, initialValueForLEDCharacteristic);
+
+		// /* setup advertising */
+		// ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		// ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
+		// ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
+		// ble.gap().setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+		// ble.gap().setAdvertisingInterval(1000); /* 1000ms. */
+		// ble.gap().startAdvertising();		
 		return 0;
 	}
-        int send(char* data){
-		if(state == 1){
-			UARTService uartService(ble);
-			int res = uartService.writeString(data);
-			if(res > 0){
-				return 0;
-			}else{
-				return -1;
-			}
-		}
-	}
-        int recv(char* data){
-		
-	}
-	/*
-	~Mbed_Bluetooth_Bluetooth(){
-		if(uartService != NULL){
-			delete uartService;
-		}
-	}*/
 };
+typedef Mbed_Bluetooth_Bluetooth_T Mbed_Bluetooth_Bluetooth;
+extern Mbed_Bluetooth_Bluetooth TL_Bluetooth;
 
-extern struct Mbed_Bluetooth_Bluetooth TL_Bluetooth;
 
 #endif

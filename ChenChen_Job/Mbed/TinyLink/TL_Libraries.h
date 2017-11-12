@@ -44,4 +44,12 @@
 	#endif
 #endif
 
+#ifdef BLE_LED 
+	#if PLATFORM == 5 && BOARD == 1011
+		#if BLE_LED == MBED_BLE_LED
+			#include "LEDService.h"
+		#endif
+	#endif
+#endif
+
 #endif
