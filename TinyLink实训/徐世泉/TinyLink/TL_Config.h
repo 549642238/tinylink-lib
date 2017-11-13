@@ -1,0 +1,13 @@
+#ifndef TL_CONFIG_H
+#define TL_CONFIG_H
+#include "TL_Device_ID.h"
+#define PLATFORM 1
+#define BOARD 1002
+#define TIME ARDUINO_TIME
+
+#define TEMPERATURE DHT11
+#define TEMPERATURE_DIGITAL_INPUT 3
+#define TEMPERATURE_DIGITAL_OUTPUT 2
+
+#define MOTTO ARDUINO_MOTTO
+#endif
