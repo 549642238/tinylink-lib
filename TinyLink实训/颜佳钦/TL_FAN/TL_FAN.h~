@@ -1,0 +1,11 @@
+#ifndef TL_FAN_H
+#define TL_FAN_H
+
+#if FAN == Arduino_FAN  //component
+  #if BOARD == 1002
+    #include "Internal_FAN_Arduino_UNO.h"
+    #include "Internal_FAN_Arduino_UNO.cpp"
+  #endif
+
+
+#endif
