@@ -1,0 +1,28 @@
+build\library\nRF51822\TARGET_MCU_NRF51822\sdk\source\libraries\bootloader_dfu\dfu_init_template.o: \
+ library\nRF51822\TARGET_MCU_NRF51822\sdk\source\libraries\bootloader_dfu\dfu_init_template.c \
+ build\mbed_config.h \
+ library\nRF51822\TARGET_MCU_NRF51822\sdk\source\libraries\bootloader_dfu\dfu_init.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/nrf.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/nrf51.h \
+ library/mbed-os/TARGET_NRF51822/core_cm0.h \
+ library/mbed-os/TARGET_NRF51822/cmsis_compiler.h \
+ library/mbed-os/TARGET_NRF51822/cmsis_gcc.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/cmsis_nvic.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/cmsis.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/nrf.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/cmsis_nvic.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/system_nrf51.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/nrf51_bitfields.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/nrf51_deprecated.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/compiler_abstraction.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/libraries/bootloader_dfu/dfu_types.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/softdevice/s130/headers/nrf_sdm.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/softdevice/s130/headers/nrf_svc.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/softdevice/s130/headers/nrf_soc.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/softdevice/s130/headers/nrf_error_soc.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/softdevice/s130/headers/nrf_error.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/softdevice/s130/headers/nrf_error_sdm.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/Lib/nordic_sdk/components/libraries/util/app_util.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/device/compiler_abstraction.h \
+ library/nRF51822/TARGET_MCU_NRF51822/sdk/source/softdevice/s130/headers/nrf_error.h \
+ library/mbed-os/TARGET_NRF51822/TARGET_NORDIC/TARGET_MCU_NRF51822/Lib/nordic_sdk/components/libraries/crc16/crc16.h
