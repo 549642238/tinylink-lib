@@ -1,19 +1,18 @@
-#include "Arduino_Fan_Fan_Arduino_UNO.h"
+#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
 
-Arduino_Fan::Arduino_Fan()
+Grove_Mini_Fan::Grove_Mini_Fan()
 {
     pinMode(fanPin, OUTPUT);
 }
 
-void Arduino_Fan::TurnOn()
+void Grove_Mini_Fan::TurnOn()
 {
     digitalWrite(fanPin, HIGH);
 }
 
-void Arduino_Fan::TurnOff()
+void Grove_Mini_Fan::TurnOff()
 {
     digitalWrite(fanPin, LOW);
 }
 
-
-Arduino_Fan TL_Fan;
+Grove_Mini_Fan TL_Fan;
