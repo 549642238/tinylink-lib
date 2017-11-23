@@ -119,10 +119,10 @@
 	#endif
 #endif
 
-//add Motor by ChenSipei
+//add Grove_Mini_Fan by ChenSipei
 #ifdef FAN
-	#if FAN == ARDUINO_FAN
-		#include "Arduino_Fan_Fan_Arduino_UNO.h"
+	#if FAN == GROVE_MINI_FAN
+		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
 	#endif	
 
 #endif

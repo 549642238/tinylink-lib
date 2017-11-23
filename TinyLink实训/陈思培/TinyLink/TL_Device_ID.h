@@ -16,6 +16,8 @@
 #define ARDUINO_TIMER 1002
 #define SD_SHIELD 2003
 
-#define ARDUINO_FAN 000//device Id by chen sipei
+#define GROVE_MINI_FAN 3064//create device Id by chen sipei.  Device:Grove-Mini_Fan
+//                                                            Function:Fan
+//                                                            Module:Grove_Mini_Fan
 
 #endif
