@@ -10,36 +10,32 @@
 #include "TL_Config.h"
 #include "LEDService.h"
 
-extern int state;
-// extern BLEDevice ble;
 extern uint8_t LedState;
+extern BLEDevice ble;
 void connectionCallback(const Gap::ConnectionCallbackParams_t *params);
 void disconnectionCallback(const Gap::DisconnectionCallbackParams_t *params);
 void onDataWrittenCallback(const GattWriteCallbackParams *params);
 void bleInitComplete(BLE::InitializationCompleteCallbackContext *params);
 class Mbed_Bluetooth_Bluetooth_T {
 public:
-
+	Mbed_Bluetooth_Bluetooth_T()
+	{
+	}
 	int init(void)
 	{
-		BLE &ble = BLE::Instance();
+		// ble = BLE::Instance();
 		ble.init(bleInitComplete);
- 		// ble.init();
-		// ble.gap().onDisconnection(disconnectionCallback);
-		// ble.gattServer().onDataWritten(onDataWrittenCallback);
-
-		// bool initialValueForLEDCharacteristic = false;
-		// ledServicePtr = new LEDService(ble, initialValueForLEDCharacteristic);
-
-		// /* setup advertising */
-		// ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-		// ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
-		// ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-		// ble.gap().setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-		// ble.gap().setAdvertisingInterval(1000); /* 1000ms. */
-		// ble.gap().startAdvertising();		
+		/* SpinWait for initialization to complete. This is necessary because the
+		 * BLE object is used in the main loop below. */
+		while (ble.hasInitialized()  == false) { /* spin loop */ }	
 		return 0;
 	}
+	void Ble_Wait(void)
+	{
+		ble.waitForEvent();
+	}
+private:
+	BLE ble;
 };
 typedef Mbed_Bluetooth_Bluetooth_T Mbed_Bluetooth_Bluetooth;
 extern Mbed_Bluetooth_Bluetooth TL_Bluetooth;

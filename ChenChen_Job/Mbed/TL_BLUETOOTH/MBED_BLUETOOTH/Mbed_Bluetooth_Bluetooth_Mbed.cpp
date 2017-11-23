@@ -6,10 +6,8 @@
 const static char     DEVICE_NAME[] = "LED";
 static const uint16_t uuid16_list[] = {LEDService::LED_SERVICE_UUID};
 LEDService *ledServicePtr;
-// BLEDevice ble;
-
-
 uint8_t LedState;
+DigitalOut RedLed(p22,1);
 void disconnectionCallback(const Gap::DisconnectionCallbackParams_t *params)
 {
     BLE::Instance().gap().startAdvertising();
@@ -23,7 +21,7 @@ void disconnectionCallback(const Gap::DisconnectionCallbackParams_t *params)
  */
 void onDataWrittenCallback(const GattWriteCallbackParams *params) {
     if ((params->handle == ledServicePtr->getValueHandle()) && (params->len == 1)) {
-        LedState = *(params->data);
+        RedLed = *(params->data);
     }
 }
 
