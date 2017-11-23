@@ -1,19 +1,19 @@
-#ifndef ARDUINO_FAN_FAN_ARDUINO_UNO_H
-#define ARDUINO_FAN_FAN_ARDUINO_UNO_H
+#ifndef GROVE_MINI_FAN_FAN_ARDUINO_UNO_H
+#define GROVE_MINI_FAN_FAN_ARDUINO_UNO_H
 
 #include <Arduino.h>
 #include "TL_Config.h"
 
-class Arduino_Fan
+class Grove_Mini_Fan
 {
 private:
-    const static int fanPin = FAN_DIGITAL_PIN;
+    int fanPin = FAN_DIGITAL_PIN;
 public:
-    Arduino_Fan();
+    Grove_Mini_Fan();
     void TurnOn();
     void TurnOff();
 };
 
-extern Arduino_Fan TL_Fan;
+extern Grove_Mini_Fan TL_Fan;
 
 #endif
