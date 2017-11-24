@@ -15,7 +15,8 @@
 #define SOIL_HUMIDITY SOIL_MOISTURE_ANALOG
 #define SOIL_HUMIDITY_ANALOG A2
 
+//edited by Yongnian
 #define FAN_DIGITAL_PIN 8
-#define FAN 3064
+#define FAN GROVE_MINI_FAN
 
 #endif

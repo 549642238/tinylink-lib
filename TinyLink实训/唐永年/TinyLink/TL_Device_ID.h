@@ -16,6 +16,7 @@
 #define ARDUINO_TIMER 1002
 #define SD_SHIELD 2003
 
+//edited by Yongnian
 #define GROVE_MINI_FAN 3064
 
 #endif

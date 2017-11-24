@@ -119,6 +119,7 @@
 	#endif
 #endif
 
+//edited by Yongnian
 #ifdef FAN
 	#if FAN == GROVE_MINI_FAN
 		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"

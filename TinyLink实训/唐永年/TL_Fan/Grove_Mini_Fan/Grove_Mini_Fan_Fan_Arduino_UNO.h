@@ -6,15 +6,12 @@
 
 class Grove_Mini_Fan
 {
-private:
-  int fanPin = FAN_DIGITAL_PIN;
-
 public:
   Grove_Mini_Fan();
   void turnOn();
   void turnOff();
 };
 
-extern Grove_Mini_Fan TL_Fan;
+extern Grove_Mini_Fan TL_Fan;//声明实例化对象
 
 #endif
