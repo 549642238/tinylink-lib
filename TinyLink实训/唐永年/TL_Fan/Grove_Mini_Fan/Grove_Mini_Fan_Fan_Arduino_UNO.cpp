@@ -8,12 +8,12 @@ Grove_Mini_Fan::Grove_Mini_Fan()
 //开启电机
 void Grove_Mini_Fan::Turn_On()
 {
-	digitalWrite(fanPin, HIGH);
+	digitalWrite(FAN_DIGITAL_PIN, HIGH);
 }
 //关闭电机
 void Grove_Mini_Fan::Turn_Off()
 {
-	digitalWrite(fanPin, LOW);
+	digitalWrite(FAN_DIGITAL_PIN, LOW);
 }
 //定义实例化对象
 Grove_Mini_Fan TL_Fan;
