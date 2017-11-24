@@ -11,11 +11,13 @@
 #define GROVE_RELAY 3061
 #define GROVE_LCD_RGB 3063
 #define ARDUINO_LED 1002
-#define ARDUINO_FAN 1002
 #define ARDUINO_SERIAL 1002
 #define ARDUINO_TIME 1002
 #define ARDUINO_TIMER 1002
 #define SD_SHIELD 2003
 
+#define GROVE_MINI_FAN 3064//create device Id by chen sipei.  Device:Grove-Mini_Fan
+//                                                            Function:Fan
+//                                                            Module:Grove_Mini_Fan
 
 #endif
