@@ -1,16 +1,14 @@
 #ifndef ARDUINO_MOTOR_MOTOR_ARDUINO_UNO_H
 #define ARDUINO_MOTOR_MOTOR_ARDUINO_UNO_H
 #include <Arduino.h>
+#include "TL_Config.h"
 class Motor {
 private:
-	const static int motorPin = 8;
-	String cmd;
+	int motorPin = MOTOR_DIGITAL_PIN;
 
 public:
-	void init();
 	void on();
 	void off();
-	void work();
 };
 
 extern Motor TL_MOTOR;
