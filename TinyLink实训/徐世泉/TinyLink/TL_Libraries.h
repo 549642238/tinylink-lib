@@ -120,9 +120,9 @@
 #endif
 
 //added by XuShiquan 
-#ifdef MOTTO
-	#if MOTTO==ARDUINO_MOTTO
-		#include "Arduino_MOTTO_MOTTO_Arduino_UNO.h"
+#ifdef FAN
+	#if FAN == GROVE_MINI_FAN
+		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
 	#endif
 #endif
 

@@ -17,7 +17,7 @@
 #define SD_SHIELD 2003
 
 //added by XuShiquan 
-#define ARDUINO_MOTTO 000
+#define GROVE_MINI_FAN 3064
 
 
 #endif
