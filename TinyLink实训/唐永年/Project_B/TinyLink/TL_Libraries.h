@@ -120,9 +120,8 @@
 #endif
 
 #ifdef FAN
-	#if FAN == ARDUINO_FAN
-		#include "Arduino_FAN_FAN_Arduino_UNO.h"
-	#endif
-#endif
+	#if FAN == GROVE_MINI_FAN
+		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
+	#endif	
 
 #endif

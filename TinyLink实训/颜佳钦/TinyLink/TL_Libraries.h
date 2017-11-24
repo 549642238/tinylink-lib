@@ -27,12 +27,6 @@
 	#endif
 #endif
 
-#ifdef FAN
-	#if FAN == ARDUINO_FAN
-		#include "Arduino_FAN_FAN_Arduino_UNO.h"
-	#endif
-#endif
-
 #ifdef PM25
 	#if PM25 == SDS018
 		#include "SDS018_PM25_Arduino_UNO.h"
@@ -73,14 +67,23 @@
 	#endif
 #endif
 
-#ifdef STORAGEf
+#ifdef STORAGE
 	#if STORAGE == SD_SHIELD
 		#include "SD_Shield_Storage_Arduino_UNO.h"
 	#endif
 #endif
 
+#ifdef LIGHT
+	#if LIGHT == GROVE_LIGHT
+		#include "Grove_Light_Light_Arduino_UNO.h"
+	#endif
+#endif
 
-
+#ifdef SOIL_HUMIDITY
+	#if SOIL_HUMIDITY == SOIL_MOISTURE_ANALOG
+		#include "Soil_Moisture_Analog_Soil_Humidity_Arduino_UNO.h"
+	#endif
+#endif
 
 #ifdef SOUND
 	// not available
@@ -115,5 +118,11 @@
 		#include "Grove_IMU9_Gyro_Arduino_UNO.h"
 	#endif
 #endif
+
+//add Grove_Mini_Fan by ChenSipei
+#ifdef FAN
+	#if FAN == GROVE_MINI_FAN
+		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
+	#endif	
 
 #endif

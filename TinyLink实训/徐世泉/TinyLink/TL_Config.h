@@ -5,9 +5,9 @@
 #define BOARD 1002
 #define TIME ARDUINO_TIME
 
-#define TEMPERATURE DHT11
-#define TEMPERATURE_DIGITAL_INPUT 3
-#define TEMPERATURE_DIGITAL_OUTPUT 2
 
-#define MOTTO ARDUINO_MOTTO
+//add FAN Configure by XuShiquan
+#define FAN_DIGITAL_PIN 8
+#define FAN GROVE_MINI_FAN
+
 #endif
