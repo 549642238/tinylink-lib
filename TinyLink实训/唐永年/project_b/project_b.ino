@@ -1,9 +1,12 @@
 #include "TL_Libraries.h"
 void setup() {
-    TL_FAN.init();
+    
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  TL_FAN.work();
+  TL_Fan.Turn_On();
+  delay(2333);
+  TL_Fan.Turn_Off();
+  delay(2333);
 }
