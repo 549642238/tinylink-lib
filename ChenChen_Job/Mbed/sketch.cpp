@@ -1,7 +1,20 @@
 #include "TL_Libraries.h"
 // #define Mbed_Led_Template
 // #define Mbed_Ble_Led_Template
-#define Mbed_Button_Template
+// #define Mbed_Button_Template
+#define Mbed_Accelerometer_Template
+
+#ifdef Mbed_Accelerometer_Template
+void setup(){
+    TL_Accelerometer.init();
+}
+
+void loop(){
+    TL_Time.delayMillis(100);
+    TL_Accelerometer.read();
+}
+#endif
+
 
 #ifdef Mbed_Button_Template
 void setup(){
