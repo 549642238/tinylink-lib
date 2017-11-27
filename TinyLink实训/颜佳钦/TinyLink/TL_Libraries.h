@@ -118,8 +118,7 @@
 		#include "Grove_IMU9_Gyro_Arduino_UNO.h"
 	#endif
 #endif
-
-//add Grove_Mini_Fan by ChenSipei
+//by yanjiaqin
 #ifdef FAN
 	#if FAN == GROVE_MINI_FAN
 		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"

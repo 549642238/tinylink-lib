@@ -1,23 +1,17 @@
-#ifndef GROVE_MINI_FAN_FAN_ARDUINO_UNO_H
-#define GROVE_MINI_FAN_FAN_ARDUINO_UNO_H
-
+#ifndef Grove_Mini_Fan_Fan_Arduino_UNO_H
+#define Grove_Mini_Fan_Fan_Arduino_UNO_H
 
 #include <Arduino.h>
 #include "TL_Config.h"
 
-class GROVE_MINI_FAN
+class Grove_Mini_Fan
 {
-
-private:
-  int state;
-  const static int  int ledPin = FAN_DIGITAL_PIN;
 public:
-  GROVE_MINI_FAN();
+  Grove_Mini_Fan();
   void turnOn();
   void turnOff();
- 
 };
 
-extern GROVE_MINI_FAN TL_FAN;//声明实例化对象
+extern Grove_Mini_Fan TL_Fan;//声明实例化对象
 
 #endif
