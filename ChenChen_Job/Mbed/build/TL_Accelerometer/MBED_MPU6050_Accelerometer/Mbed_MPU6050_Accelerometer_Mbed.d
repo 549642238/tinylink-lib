@@ -1,0 +1,3 @@
+build\TL_Accelerometer\MBED_MPU6050_Accelerometer\Mbed_MPU6050_Accelerometer_Mbed.o: \
+ TL_Accelerometer\MBED_MPU6050_Accelerometer\Mbed_MPU6050_Accelerometer_Mbed.cpp \
+ build\mbed_config.h
