@@ -125,4 +125,11 @@
 		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
 	#endif	
 
+#endif 
+
+#ifdef ACCELEROMETER
+	#if ACCELEROMETER == MBED_MPU6050
+		#include "Mbed_MPU6050_MPU6050_Mbed.h"
+	#endif
 #endif
+	
