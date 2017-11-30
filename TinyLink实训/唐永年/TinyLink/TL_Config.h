@@ -15,8 +15,8 @@
 #define SOIL_HUMIDITY SOIL_MOISTURE_ANALOG
 #define SOIL_HUMIDITY_ANALOG A2
 
-//edited by Yongnian
-#define FAN_DIGITAL_PIN 8
-#define FAN GROVE_MINI_FAN
+#define FAN_DIGITAL_PIN 8 //edited by Yongnian
+#define FAN GROVE_MINI_FAN //edited by Yongnian
+#define ACCELEROMETER MBED_MPU6050 //edited by Yongnian
 
 #endif
