@@ -119,11 +119,11 @@
 	#endif
 #endif
 
-//motor,new added
-#ifdef MOTOR
-	#if MOTOR == ARDUINO_MOTOR
-		#include "Arduino_MOTOR_MOTOR_Arduino_UNO.h"
-	#endif
+//function:fun
+#ifdef FAN
+	#if FAN == GROVE_MINI_FAN
+		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
+	#endif	
 #endif
 
 

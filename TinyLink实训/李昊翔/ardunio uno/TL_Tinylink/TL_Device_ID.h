@@ -16,7 +16,7 @@
 #define ARDUINO_TIMER 1002
 #define SD_SHIELD 2003
 
-#define ARDUINO_MOTOR 000//ardunio motor id
+#define GROVE_MINI_FAN 3064//device id,byLHX
 
 
 #endif
