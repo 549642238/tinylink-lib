@@ -12,4 +12,7 @@ MBed 蓝牙连接不上。2017/11/12
 所有历程都在sketch.cpp文件中，  
 #define Mbed_Led_Template//led  
 #define Mbed_Ble_Led_Template//Ble_led  
-#define Mbed_Button_Template//Button
+#define Mbed_Button_Template//Button  
+
+## 2017/11/26 更新说明  
+移植加速度，加速度值可以通过串口打印，串口波特率为9600。

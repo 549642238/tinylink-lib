@@ -30,7 +30,7 @@
 #ifdef ACCELERATION 
 	#if PLATFORM == 5 && BOARD == 1011
 		#if ACCELERATION == MBED_MPU6050
-			#include "Mbed_MPU6050_MPU6050_Mbed.h"
+			#include "Mbed_MPU6050_Accelerometer_Mbed.h"
 			// #include "other acceleration"
 		#endif
 	#endif
