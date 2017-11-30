@@ -6,12 +6,12 @@ Grove_Mini_Fan::Grove_Mini_Fan()
 	pinMode(FAN_DIGITAL_PIN,OUTPUT);
 }
 //开启电机
-void Grove_Mini_Fan::Turn_On()
+void Grove_Mini_Fan::turnOn()
 {
 	digitalWrite(FAN_DIGITAL_PIN, HIGH);
 }
 //关闭电机
-void Grove_Mini_Fan::Turn_Off()
+void Grove_Mini_Fan::turnOff()
 {
 	digitalWrite(FAN_DIGITAL_PIN, LOW);
 }
