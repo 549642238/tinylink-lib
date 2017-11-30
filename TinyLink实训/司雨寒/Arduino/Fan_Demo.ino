@@ -5,8 +5,8 @@ void setup() {
 }
 
 void loop() {
-	TL_Motor.on();
+	TL_Fan.on();
 	delay(1000);
-	TL_Motor.off();
+	TL_Fan.off();
 	delay(1000);
 }

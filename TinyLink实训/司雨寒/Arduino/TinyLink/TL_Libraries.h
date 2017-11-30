@@ -27,12 +27,6 @@
 	#endif
 #endif
 
-#ifdef MOTOR
-	#if MOTOR == ARDUINO_MOTOR
-		#include "Arduino_MOTOR_MOTOR_Arduino_UNO.h"
-	#endif
-#endif
-
 #ifdef PM25
 	#if PM25 == SDS018
 		#include "SDS018_PM25_Arduino_UNO.h"
@@ -125,4 +119,9 @@
 	#endif
 #endif
 
-
+//add Grove_Mini_Fan by SiYuhan
+#ifdef FAN
+	#if FAN == GROVE_MINI_FAN
+		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
+	#endif
+#endif

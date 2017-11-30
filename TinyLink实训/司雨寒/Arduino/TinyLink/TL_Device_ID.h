@@ -15,6 +15,8 @@
 #define ARDUINO_TIME 1002
 #define ARDUINO_TIMER 1002
 #define SD_SHIELD 2003
-#define ARDUINO_MOTOR 1002
+
+//create FAN device ID by SiYuhan
+#define GROVE_MINI_FAN 3064
 
 #endif

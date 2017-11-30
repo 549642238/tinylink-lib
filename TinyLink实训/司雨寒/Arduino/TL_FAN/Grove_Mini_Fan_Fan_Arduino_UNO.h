@@ -2,15 +2,14 @@
 #define ARDUINO_MOTOR_MOTOR_ARDUINO_UNO_H
 #include <Arduino.h>
 #include "TL_Config.h"
-class Motor {
-private:
-	int motorPin = MOTOR_DIGITAL_PIN;
 
+class Grove_Mini_Fan {
 public:
+	Grove_Mini_Fan();
 	void on();
 	void off();
 };
 
-extern Motor TL_MOTOR;
+extern Grove_Mini_Fan TL_Fan;
 
 #endif
