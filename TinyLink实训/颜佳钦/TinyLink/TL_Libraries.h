@@ -123,5 +123,10 @@
 	#if FAN == GROVE_MINI_FAN
 		#include "Grove_Mini_Fan_Fan_Arduino_UNO.h"
 	#endif	
-
+#endif
+//加速器 by yanjiaqin
+#ifdef ACCELEROMETER
+	#if ACCELEROMETER == MBED_MPU6050
+		#include "Mbed_MPU6050_MPU6050_Mbed.h"
+	#endif
 #endif

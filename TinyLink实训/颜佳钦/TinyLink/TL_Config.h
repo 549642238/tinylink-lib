@@ -18,6 +18,6 @@
 //edited by yanjiaqin
 #define FAN_DIGITAL_PIN 8
 #define FAN GROVE_MINI_FAN
-
+#define ACCELEROMETER MBED_MPU6050 //与tangyongnian统一
 
 #endif
