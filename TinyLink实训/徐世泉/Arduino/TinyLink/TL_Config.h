@@ -7,7 +7,6 @@
 
 
 //add FAN Configure by XuShiquan
-#define FAN_DIGITAL_PIN 8
 #define FAN GROVE_MINI_FAN
 
 #endif

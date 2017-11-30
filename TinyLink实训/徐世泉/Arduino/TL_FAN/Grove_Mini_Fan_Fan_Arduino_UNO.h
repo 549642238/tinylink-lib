@@ -12,7 +12,7 @@
 class Grove_Mini_Fan
 {
 private:
-    int fanPin = FAN_DIGITAL_PIN;
+    const static int  fanPin = 8;
 public:
     Grove_Mini_Fan();
     void TurnOn();
