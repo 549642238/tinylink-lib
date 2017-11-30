@@ -28,7 +28,11 @@ class Mbed_MPU6050_Accelerometer{
     	mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL);
 		 //设置采样率
     	mpu_set_sample_rate(DEFAULT_MPU_HZ);
-
+		
+		dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT|DMP_FEATURE_TAP|    //设置dmp功能
+        DMP_FEATURE_ANDROID_ORIENT|DMP_FEATURE_SEND_RAW_ACCEL|DMP_FEATURE_SEND_CAL_GYRO|
+                    DMP_FEATURE_GYRO_CAL);
+		dmp_set_fifo_rate(DEFAULT_MPU_HZ);        //设置DMP输出速率(最大不超过200Hz)
     	return 0;
 	}
 }
