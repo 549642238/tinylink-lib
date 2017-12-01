@@ -1,0 +1,2 @@
+Fill.text,Fill.data,Fill.bss,Misc.text,Misc.data,Misc.bss,TARGET_NRF51822/TOOLCHAIN_GCC_ARM.text,TARGET_NRF51822/TOOLCHAIN_GCC_ARM.data,TARGET_NRF51822/TOOLCHAIN_GCC_ARM.bss,static_ram,heap,stack,total_ram,total_flash
+88,3,35,29671,137,1133,3266,12,208,1528,2568,2048,6144,33177
