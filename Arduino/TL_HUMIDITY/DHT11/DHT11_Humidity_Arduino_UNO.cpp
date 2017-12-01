@@ -1,18 +1,16 @@
 #include "DHT11_Humidity_Arduino_UNO.h"
 
-DHT_11_Humidity::DHT_11_Humidity():Sensor(0.0){
-  DHT11Humi.begin();
+DHT11_Humidity_Arduino_UNO::DHT11_Humidity_Arduino_UNO():Sensor(0.0), DHT11Humi(HUMIDITY_DIGITAL_OUTPUT, DHT11_SENSOR){
+	DHT11Humi.begin();
 }
 
-int DHT_11_Humidity::_read(){
-  double chk = (double)DHT11Humi.readHumidity();
-  if (!isnan(chk)){
-    _data = chk;
-    return 0;
-  }
-  return -1;
+int DHT11_Humidity_Arduino_UNO::_read(){
+	double chk = (double)DHT11Humi.readHumidity();
+	if (!isnan(chk)){
+		_data = chk;
+		return 0;
+	}
+	return -1;
 }
 
-#if HUMIDITY == DHT11
-  DHT_11_Humidity TL_Humidity = DHT_11_Humidity();
-#endif
+DHT11_Humidity_Arduino_UNO TL_Humidity;

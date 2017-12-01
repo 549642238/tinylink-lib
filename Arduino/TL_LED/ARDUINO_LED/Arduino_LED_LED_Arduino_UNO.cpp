@@ -1,35 +1,33 @@
 #include "Arduino_LED_LED_Arduino_UNO.h"
 
-Internal_LED::Internal_LED()
-{
-  pinMode(ledPin, OUTPUT);
-  state = 0;
+Arduino_LED_LED_Arduino_UNO::Arduino_LED_LED_Arduino_UNO():stateSig(0){
+	pinMode(ledPin, OUTPUT);
+	digitalWrite(ledPin, LOW);
+	stateSig = 0;
 }
 
-void Internal_LED::toggle()
-{
-  if (state == 0)
-  {
-    state = 1;
-    digitalWrite(ledPin, HIGH);
-  }
-  else
-  {
-    state = 0;
-    digitalWrite(ledPin, LOW);
-  }
+void Arduino_LED_LED_Arduino_UNO::toggle(){
+	if (stateSig == 0){
+		digitalWrite(ledPin, HIGH);
+		stateSig = 1;
+	}else{
+		digitalWrite(ledPin, LOW);
+		stateSig = 0;
+	}
 }
 
-void Internal_LED::turnOn()
-{
-  state = 1;
-  digitalWrite(ledPin, HIGH);
+void Arduino_LED_LED_Arduino_UNO::turnOn(){
+	digitalWrite(ledPin, HIGH);
+	stateSig = 1;
 }
 
-void Internal_LED::turnOff()
-{
-  state = 0;
-  digitalWrite(ledPin, LOW);
+void Arduino_LED_LED_Arduino_UNO::turnOff(){
+	digitalWrite(ledPin, LOW);
+	stateSig = 0;
 }
 
-Internal_LED TL_LED;
+const int Arduino_LED_LED_Arduino_UNO::state(){
+	return stateSig;
+}
+
+Arduino_LED_LED_Arduino_UNO TL_LED;

@@ -6,14 +6,15 @@
 #include "Sensor_template.h"
 #include <SoftwareSerial.h>
 
-class T_SDS018: public Sensor<double>{
+class SDS018_PM25_Arduino_UNO: public Sensor<double>{
 private:
-  double pm25, pm10;
-  int _read();
+	int start;
+	double pm25, pm10;
+	int _read();
 public:
-  T_SDS018();
+	SDS018_PM25_Arduino_UNO();
 };
 
-extern T_SDS018 TL_PM25;
+extern SDS018_PM25_Arduino_UNO TL_PM25;
 
 #endif

@@ -6,19 +6,14 @@
 #include "Sensor_template.h"
 #include "arduino_dht.h"
 
-#if HUMIDITY == DHT11
-  #define DHTPIN HUMIDITY_DIGITAL_OUTPUT
-#endif
-
-class DHT_11_Humidity: public Sensor<double>{
-
+class DHT11_Humidity_Arduino_UNO: public Sensor<double>{
 private:
-  DHT_Lib DHT11Humi = DHT_Lib(DHTPIN,DHT11_SENSOR);
-  int _read();
+	DHT_Lib DHT11Humi;
+	int _read();
 public:
-  DHT_11_Humidity();
+	DHT11_Humidity_Arduino_UNO();
 };
 
-extern DHT_11_Humidity TL_Humidity;
+extern DHT11_Humidity_Arduino_UNO TL_Humidity;
 
 #endif

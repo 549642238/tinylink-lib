@@ -1,18 +1,16 @@
 #include "DHT11_Temperature_Arduino_UNO.h"
 
-DHT_11_Temperature::DHT_11_Temperature():Sensor(0.0){
-  DHT11Temp.begin();
+DHT11_Temperature_Arduino_UNO::DHT11_Temperature_Arduino_UNO():Sensor(0.0), DHT11Temp(TEMPERATURE_DIGITAL_OUTPUT, DHT11_SENSOR){
+	DHT11Temp.begin();
 }
 
-int DHT_11_Temperature::_read(){
-  double chk = (double)DHT11Temp.readTemperature();
-  if (!isnan(chk)){
-    _data = chk;
-    return 0;
-  }
-  return -1;
+int DHT11_Temperature_Arduino_UNO::_read(){
+	double chk = (double)DHT11Temp.readTemperature();
+	if (!isnan(chk)){
+		_data = chk;
+		return 0;
+	}
+	return -1;
 }
 
-#if TEMPERATURE == DHT11
-  DHT_11_Temperature TL_Temperature = DHT_11_Temperature();
-#endif
+DHT11_Temperature_Arduino_UNO TL_Temperature;

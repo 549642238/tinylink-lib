@@ -1,7 +1,0 @@
-U_BLOX_GPS_RPI = {TL_GPS.file, u_blox_GPS_RPI}
-DHT11_HUMIDITY_RPI = {TL_Humidity.file, DHT11_Humidity_RPI, DHT11_RPI}
-OUTLED_LED_RPI = {TL_LED.file, led_reg_RPI, OUTLED_LED_RPI}
-GROVE_LIGHT_LIGHT_RPI = {TL_Light.file, Grove_Light_Light_RPI}
-SOIL_MOISTURE_ANALOG_SOIL_HUMIDITY_RPI = {TL_Soil_Humidity.file, Soil_Moisture_Analog_Soil_Humidity_RPI}
-RPI_SD_STORAGE_RPI = {TL_Storage.file, RPI_SD_Storage_RPI}
-DHT11_TEMPERATURE_BBB = {TL_Temperature.file, DHT11_RPI, DHT11_Temperature}

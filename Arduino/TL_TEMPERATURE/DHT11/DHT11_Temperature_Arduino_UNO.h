@@ -6,19 +6,14 @@
 #include "Sensor_template.h"
 #include "arduino_dht.h"
 
-#if TEMPERATURE == DHT11
-  #define DHTPIN TEMPERATURE_DIGITAL_OUTPUT
-#endif
-
-class DHT_11_Temperature: public Sensor<double>{
-
+class DHT11_Temperature_Arduino_UNO: public Sensor<double>{
 private:
-  DHT_Lib DHT11Temp = DHT_Lib(DHTPIN,DHT11_SENSOR);
-  int _read();
+	DHT_Lib DHT11Temp;
+	int _read();
 public:
-  DHT_11_Temperature();
+	DHT11_Temperature_Arduino_UNO();
 };
 
-extern DHT_11_Temperature TL_Temperature;
+extern DHT11_Temperature_Arduino_UNO TL_Temperature;
 
 #endif

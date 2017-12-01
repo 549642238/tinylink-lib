@@ -3,40 +3,50 @@
 #include "TL_Config.h"
 #include "Grove_LCD_RGB_Display_Arduino_Uno.h"
 
-GROVE_LCD_RGB_DISPLAY::GROVE_LCD_RGB_DISPLAY():state(0){
+Grove_LCD_RGB_Display_Arduino_Uno::Grove_LCD_RGB_Display_Arduino_Uno():lcd(), init(0){
 }
 
-void GROVE_LCD_RGB_DISPLAY::show(const char* data){
-	if(state == 0){
+void Grove_LCD_RGB_Display_Arduino_Uno::show(const char* data){
+	if(init == 0){
 		lcd.begin(16, 2);
 		//lcd.setRGB(255, 0, 0);
-		lcd.print("hello, master!");
+		lcd.clear();
 		delay(500);
-		state = 1;
+		init = 1;
 	}
-	lcd.print(data);
+	strncpy(stateSig, data, 16);
+	lcd.clear();
+	lcd.print(stateSig);
 }
 
-void GROVE_LCD_RGB_DISPLAY::show(const String& data){
-	if(state == 0){
+void Grove_LCD_RGB_Display_Arduino_Uno::show(const String& data){
+	if(init == 0){
 		lcd.begin(16, 2);
 		//lcd.setRGB(255, 0, 0);
-		lcd.print("hello, master!");
+		lcd.clear();
 		delay(500);
-		state = 1;
+		init = 1;
 	}
-	lcd.print(data);
+	strncpy(stateSig, data.c_str(), 16);
+	lcd.clear();
+	lcd.print(stateSig);
 }
 
-void GROVE_LCD_RGB_DISPLAY::clear(){
-	if(state == 0){
+void Grove_LCD_RGB_Display_Arduino_Uno::clear(){
+	if(init == 0){
 		lcd.begin(16, 2);
 		//lcd.setRGB(255, 0, 0);
-		lcd.print("hello, master!");
+		lcd.clear();
 		delay(500);
-		state = 1;
+		init = 1;
 	}
 	lcd.clear();
 }
 
-GROVE_LCD_RGB_DISPLAY TL_Display;
+const char* Grove_LCD_RGB_Display_Arduino_Uno::state(){
+	return stateSig;
+}
+
+char Grove_LCD_RGB_Display_Arduino_Uno::stateSig[17] = "";
+
+Grove_LCD_RGB_Display_Arduino_Uno TL_Display;

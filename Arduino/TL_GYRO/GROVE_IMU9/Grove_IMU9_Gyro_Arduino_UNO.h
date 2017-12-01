@@ -8,7 +8,7 @@
 #include "I2Cdev.h"
 
 
-class Grove_9DOF_Gyro{
+class Grove_IMU9_Gyro_Arduino_UNO{
 private:
 	MPU9250 accelgyro;
 	I2Cdev   I2C_M;
@@ -16,7 +16,7 @@ private:
 	int16_t gx, gy, gz;
 	int state;
 public:
-	Grove_9DOF_Gyro();
+	Grove_IMU9_Gyro_Arduino_UNO();
 	int read();
 	void init();
 	double data_x();
@@ -24,6 +24,6 @@ public:
 	double data_z();
 };
 
-extern Grove_9DOF_Gyro TL_Gyro;
+extern Grove_IMU9_Gyro_Arduino_UNO TL_Gyro;
 
 #endif
