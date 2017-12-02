@@ -1,18 +1,16 @@
 #ifndef LINKIT_OME_DHT_H
 #define LINKIT_OME_DHT_H
 #if ARDUINO >= 100
- #include "Arduino.h"
+	#include "Arduino.h"
 #else
- #include "WProgram.h"
+	#include "WProgram.h"
 #endif
 
 /* DHT library 
-
-MIT license
-written by Adafruit Industries
+*	MIT license
+*	written by Adafruit Industries
 */
 
-// how many timing transitions we need to keep track of. 2 * number bits + extra
 #define MAXTIMINGS 85
 
 #define DHT11_SENSOR 11
@@ -21,21 +19,21 @@ written by Adafruit Industries
 #define AM2301_SENSOR 21
 
 class DHT_Lib {
- private:
-  uint8_t data[6];
-  uint8_t _pin, _type, _count;
-  unsigned long _lastreadtime;
-  boolean firstreading;
-
- public:
-  DHT_Lib(uint8_t pin, uint8_t type, uint8_t count=13);
-  void begin(void);
-  float readTemperature(bool S=false);
-  float convertCtoF(float);
-  float convertFtoC(float);
-  float computeHeatIndex(float tempFahrenheit, float percentHumidity);
-  float readHumidity(void);
-  boolean read(void);
-
+private:
+	uint8_t data[6];
+	uint8_t _pin, _type, _count;
+	unsigned long _lastreadtime;
+	boolean firstreading;
+	DHT_Lib(uint8_t pin, uint8_t type, uint8_t count=13);
+	DHT_Lib(const DHT_Lib&);
+	DHT_Lib& operator= (const DHT_Lib&);
+public:
+	static DHT_Lib& getSingleItem(uint8_t pin, uint8_t type);
+	float readTemperature(bool S=false);
+	float convertCtoF(float);
+	float convertFtoC(float);
+	float computeHeatIndex(float tempFahrenheit, float percentHumidity);
+	float readHumidity(void);
+	boolean read(void);
 };
 #endif

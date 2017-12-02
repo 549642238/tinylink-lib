@@ -1,7 +1,6 @@
 #include "DHT11_Temperature_LinkIt_One.h"
 
-DHT11_Temperature_LinkIt_One::DHT11_Temperature_LinkIt_One():Sensor(0.0), DHT11Temp(TEMPERATURE_DIGITAL_OUTPUT, DHT11_SENSOR){
-	DHT11Temp.begin();
+DHT11_Temperature_LinkIt_One::DHT11_Temperature_LinkIt_One():Sensor(0.0), DHT11Temp(DHT_Lib::getSingleItem(TEMPERATURE_DIGITAL_OUTPUT,DHT11_SENSOR)){
 }
 
 int DHT11_Temperature_LinkIt_One::_read(){

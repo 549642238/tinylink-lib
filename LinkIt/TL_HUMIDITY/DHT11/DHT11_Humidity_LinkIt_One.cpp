@@ -1,7 +1,6 @@
 #include "DHT11_Humidity_LinkIt_One.h"
 
-DHT11_Humidity_LinkIt_One::DHT11_Humidity_LinkIt_One():Sensor(0.0), DHT11Humi(HUMIDITY_DIGITAL_OUTPUT, DHT11_SENSOR){
-	DHT11Humi.begin();
+DHT11_Humidity_LinkIt_One::DHT11_Humidity_LinkIt_One():Sensor(0.0), DHT11Humi(DHT_Lib::getSingleItem(HUMIDITY_DIGITAL_OUTPUT,DHT11_SENSOR)){
 }
 
 int DHT11_Humidity_LinkIt_One::_read(){

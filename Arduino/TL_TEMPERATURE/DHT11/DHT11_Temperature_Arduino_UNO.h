@@ -8,7 +8,7 @@
 
 class DHT11_Temperature_Arduino_UNO: public Sensor<double>{
 private:
-	DHT_Lib DHT11Temp;
+	DHT_Lib& DHT11Temp;
 	int _read();
 public:
 	DHT11_Temperature_Arduino_UNO();

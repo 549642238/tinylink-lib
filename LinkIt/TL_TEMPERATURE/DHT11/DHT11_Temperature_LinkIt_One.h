@@ -8,7 +8,7 @@
 
 class DHT11_Temperature_LinkIt_One: public Sensor<double>{
 private:
-	DHT_Lib DHT11Temp;
+	DHT_Lib& DHT11Temp;
 	int _read();
 public:
 	DHT11_Temperature_LinkIt_One();

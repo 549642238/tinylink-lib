@@ -8,7 +8,7 @@
 
 class DHT11_Humidity_LinkIt_One: public Sensor<double>{
 private:
-	DHT_Lib DHT11Humi;
+	DHT_Lib& DHT11Humi;
 	int _read();
 public:
 	DHT11_Humidity_LinkIt_One();
