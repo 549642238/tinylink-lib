@@ -3,7 +3,8 @@
 #include "Grove_RTC_RTC_Arduino_UNO.h"
 #include <Wire.h>
 
-Grove_RTC_RTC::Grove_RTC_RTC():Sensor(NULL){
+Grove_RTC_RTC::Grove_RTC_RTC():Sensor(malloc(sizeof(struct time))){
+	//_data=(struct time*)malloc(sizeof(struct time));
 	begin();
 }
 
