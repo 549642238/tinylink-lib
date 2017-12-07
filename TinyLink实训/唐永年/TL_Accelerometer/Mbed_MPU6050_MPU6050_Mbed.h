@@ -14,7 +14,7 @@
 #define DEFAULT_MPU_HZ  100
 
 class Mbed_MPU6050_Accelerometer{
-	Mbed_MPU6050_Accelerometer():more(1),pc(USBTX,USBRX){}
+	Mbed_MPU6050_Accelerometer(){}
 	//return 0 if cuccessful.
 	int init(){
 		mbed_i2c_clear(MPU6050_SDA,MPU6050_SCL);
