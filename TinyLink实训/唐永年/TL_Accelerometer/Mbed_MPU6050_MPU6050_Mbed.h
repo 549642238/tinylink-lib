@@ -11,12 +11,7 @@
 #define MPU6050_SCL 23
 #define MPU6050_SDA 24
 
-#define DEFAULT_MPU_HZ  (100)
-static signed char board_orientation[9] = {
-    1, 0, 0,
-    0, 1, 0,
-    0, 0, 1
-};
+#define DEFAULT_MPU_HZ  100
 
 class Mbed_MPU6050_Accelerometer{
 	Mbed_MPU6050_Accelerometer():more(1),pc(USBTX,USBRX){}
@@ -24,7 +19,6 @@ class Mbed_MPU6050_Accelerometer{
 	int init(){
 		mbed_i2c_clear(MPU6050_SDA,MPU6050_SCL);
 		if(mpu_init(0)){
-			pc.printf("fail to initialize\n");
 			return 1;
 		}
     	//设置所需要的传感器
