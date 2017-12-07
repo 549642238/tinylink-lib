@@ -119,9 +119,10 @@
 	#endif
 #endif
 
+//Edit by zyx
 #ifdef BUZZER
 	#if BUZZER == GROVE_BUZZER
-		#include "Grove_Buzzer_Buzzer_Arduino_Uno.h"
+		#include "Grove_Buzzer_Buzzer_Arduino_UNO.h"
 	#endif
 #endif
 
@@ -170,6 +171,30 @@
 #ifdef DMX512
 	#if DMX512 == GROVE_DMX512
 		#include "Grove_DMX512_DMX512_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef IRREV
+	#if IRREV == GROVE_IRREV
+		#include "Grove_IRRev_IRRev_Arduino_UNO.h"
+	#endif
+#endif
+
+#ifdef IRSEND
+	#if IRSEND == GROVE_IRSEND
+		#include "Grove_IRSend_IRSend_Arduino_UNO.h"
+	#endif
+#endif
+
+#ifdef RTC
+	#if RTC == GROVE_RTC
+		#include "Grove_RTC_RTC_Arduino_UNO.h"
+	#endif
+#endif
+
+#ifdef MP3
+	#if MP3 == GROVE_MP3
+		#include "Grove_MP3_MP3_Arduino_UNO.h"
 	#endif
 #endif
 
