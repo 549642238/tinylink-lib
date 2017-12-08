@@ -1,6 +1,7 @@
 #ifndef MBED_GYRO_GYRO_MBED_H
 #define MBED_GYRO_GYRO_MBED_H
-
+#include <cstdio>
+#include <cstdlib>
 #include "mbed.h"
 #include "mbed_i2c.h"
 #include "inv_mpu.h"
@@ -35,9 +36,12 @@ class Gyro {
 	long quat[4];
 	unsigned char more;
 
-	signed char board_orientation[9] = { 1, 0, 0, 0, 1, 0, 0, 0, 1 };
+	signed char board_orientation[9];
 
-	Gyro() {}
+	Gyro() {
+		memset(board_orientation, 0, sizeof(board_orientation));
+		for(int i = 0 ; i < 3; i++) board_orientation[i][i] = 1;
+	}
 	int init() {
 		mbed_i2c_clear(MPU6050_SDA, MPU6050_SCL);
 		mbed_i2c_init(MPU6050_SDA, MPU6050_SCL);
