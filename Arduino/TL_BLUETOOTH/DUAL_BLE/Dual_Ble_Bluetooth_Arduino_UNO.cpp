@@ -1,11 +1,7 @@
 #include "Dual_Ble_Bluetooth_Arduino_UNO.h"
 
 #if BLUETOOTH_UART_TX == 0 && BLUETOOTH_UART_RX == 1
-	#if BLUETOOTH_UART_TX == 0 && BLUETOOTH_UART_RX == 1
-		#define blueToothSerial Serial
-	#else
-		#pragma message("Error: UART RX and TX are not consecutive!")
-	#endif
+	#define blueToothSerial Serial
 #else
 	SoftwareSerial blueToothSerial(BLUETOOTH_UART_TX, BLUETOOTH_UART_RX);
 #endif

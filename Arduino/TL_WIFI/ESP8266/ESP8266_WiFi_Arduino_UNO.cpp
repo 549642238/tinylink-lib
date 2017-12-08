@@ -1,11 +1,7 @@
 #include "ESP8266_WiFi_Arduino_UNO.h"
 
 #if WIFI_UART_TX == 0 && WIFI_UART_RX == 1
-	#if WIFI_UART_TX == 0 && WIFI_UART_RX == 1 // (UTX, URX) = (0, 1)
-		#define ESP_WiFi Serial
-	#else
-		#pragma message("Error: UART RX and TX are not consecutive!")
-	#endif
+	#define ESP_WiFi Serial
 #else
 	SoftwareSerial ESP_WiFi(WIFI_UART_TX, WIFI_UART_RX);
 #endif

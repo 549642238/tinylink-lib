@@ -1,11 +1,7 @@
 #include "SDS018_PM25_Arduino_UNO.h"
 
 #if PM25_UART_TX == 0 || PM25_UART_RX == 1
-	#if PM25_UART_TX == 0 && PM25_UART_RX == 1
-		#define SDS018_Serial Serial
-	#else
-		#pragma message("Error: UART RX and TX are not consecutive!")
-	#endif
+	#define SDS018_Serial Serial
 #else
 	SoftwareSerial SDS018_Serial(PM25_UART_TX, PM25_UART_RX);
 #endif
