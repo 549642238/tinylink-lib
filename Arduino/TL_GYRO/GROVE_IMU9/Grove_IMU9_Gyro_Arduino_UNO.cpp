@@ -1,10 +1,9 @@
 #include "Grove_IMU9_Gyro_Arduino_UNO.h"
 
-Grove_9DOF_Gyro::Grove_9DOF_Gyro(){
-	state = 0;
+Grove_IMU9_Gyro_Arduino_UNO::Grove_IMU9_Gyro_Arduino_UNO():accelgyro(),I2C_M(),status(0),gx(0),gy(0),gz(0),state(0){
 }
 
-int Grove_9DOF_Gyro::read(){
+int Grove_IMU9_Gyro_Arduino_UNO::read(){
 	if (state == 0){
 		Wire.begin();
 		accelgyro.initialize();
@@ -25,20 +24,16 @@ int Grove_9DOF_Gyro::read(){
 	}
 }
 
-double Grove_9DOF_Gyro::data_x(){
+double Grove_IMU9_Gyro_Arduino_UNO::data_x(){
 	return (double) gx * 250 / 32768;
 }
 
-double Grove_9DOF_Gyro::data_y(){
+double Grove_IMU9_Gyro_Arduino_UNO::data_y(){
 	return (double) gy * 250 / 32768;
 }
 
-double Grove_9DOF_Gyro::data_z(){
+double Grove_IMU9_Gyro_Arduino_UNO::data_z(){
 	return (double) gz * 250 / 32768;
 }
 
-
-
-#if GYRO == GROVE_IMU9
-	Grove_9DOF_Gyro TL_Gyro;
-#endif
+Grove_IMU9_Gyro_Arduino_UNO TL_Gyro;

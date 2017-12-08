@@ -5,13 +5,13 @@
 #include "TL_Config.h"
 #include "Sensor_template.h"
 
-class Soil_Humidity: public Sensor<double>{
+class Soil_Moisture_Analog_Soil_Humidity_Arduino_UNO: public Sensor<double>{
 private:
-  int _read();
+	int _read();
 public:
-  Soil_Humidity();
+	Soil_Moisture_Analog_Soil_Humidity_Arduino_UNO();
 };
 
-extern Soil_Humidity TL_Soil_Humidity;
+extern Soil_Moisture_Analog_Soil_Humidity_Arduino_UNO TL_Soil_Humidity;
 
 #endif
