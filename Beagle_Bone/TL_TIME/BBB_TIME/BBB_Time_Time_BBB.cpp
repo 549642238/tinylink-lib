@@ -1,4 +1,4 @@
-#include "BBB_TIME_TIME_BBB.h"
+#include "BBB_Time_Time_BBB.h"
 
 void _TIME::delayMillis(uint32_t duration) {
 	::delay(duration);

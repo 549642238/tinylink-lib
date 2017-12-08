@@ -14,7 +14,7 @@
 #ifdef TIME
 	#if PLATFORM == 3 && BOARD == 1005
 		#if TIME == BBB_TIME
-			#include "BBB_TIME_TIME_BBB.h"
+			#include "BBB_Time_Time_BBB.h"
 		#endif
 	#endif
 #endif
@@ -22,7 +22,7 @@
 #ifdef TIMER
 	#if PLATFORM == 3 && BOARD == 1005
 		#if TIMER == BBB_TIMER
-			#include "BBB_TIMER_TIMER_BBB.h"
+			#include "BBB_Timer_Timer_BBB.h"
 		#endif
 	#endif
 #endif
@@ -129,30 +129,6 @@
 			#include "BBB_LED_LED_BBB.h"
 		#elif LED == OUTLED
 			#include "OUTLED_LED_BBB.h"
-		#endif
-	#endif
-#endif
-
-#ifdef RELAY
-	#if PLATFORM == 3 && BOARD == 1005
-		#if RELAY == GROVE_RELAY
-			#include "Grove_LCD_RGB_Display_BBB.h"
-		#endif
-	#endif
-#endif
-
-#ifdef VOICE
-	#if PLATFORM == 3 && BOARD == 1005
-		#if VOICE == VOICE_USB
-			#include "Voice_USB_Voice_BBB.h"
-		#endif
-	#endif
-#endif
-
-#ifdef DISPLAY
-	#if PLATFORM == 3 && BOARD == 1005
-		#if DISPLAY == GROVE_LCD_RGB
-			#include "Grove_Relay_Relay_BBB.h"
 		#endif
 	#endif
 #endif

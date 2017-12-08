@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "BBB_TIMER_TIMER_BBB.h"
+#include "BBB_Timer_Timer_BBB.h"
 
 static void * _timer_thread(void * data);
 static pthread_t tid_timer;
