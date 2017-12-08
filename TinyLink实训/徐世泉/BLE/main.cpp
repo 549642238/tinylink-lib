@@ -13,8 +13,8 @@ int main(void)
 	{
 		led1 = 1;
 		//调用我们的延时函数延时2s 
-		TL_TIME.delay_s(2);
+		TL_TIME.delayMillis(2000);
 		led1 = 0;
-		TL_TIME.delay_ms(2000);
+		TL_TIME.delayMicros(2000000);
 	}
 }
