@@ -74,8 +74,6 @@ boolean DHT_Lib::read(void) {
 	uint8_t counter = 0;
 	uint8_t j = 0, i;
 	unsigned long currenttime;
-	digitalWrite(_pin, HIGH);
-	delay(250);
 	currenttime = millis();
 	if (currenttime < _lastreadtime) {
 		_lastreadtime = 0;
@@ -86,6 +84,8 @@ boolean DHT_Lib::read(void) {
 	firstreading = false;
 	_lastreadtime = millis();
 	data[0] = data[1] = data[2] = data[3] = data[4] = 0;
+	digitalWrite(_pin, HIGH);
+	delay(250);
 	pinMode(_pin, OUTPUT);
 	digitalWrite(_pin, LOW);
 	delay(20);
