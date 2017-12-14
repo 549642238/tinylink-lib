@@ -1,4 +1,4 @@
-#include "Mbed_MPU6050_Accelerometer_Mbed.h"
+#include "Grove_MPU6050_Accelerometer_Arduino_UNO.h"
 
 Grove_MPU6050_Accelerometer_Arduino_UNO::Grove_MPU6050_Accelerometer_Arduino_UNO():accelgyro(),I2C_M(),status(0),ax(0),ay(0),az(0),state(0){
 	state = 0;
