@@ -1,6 +1,6 @@
 #ifndef MBED_MPU6050_MPU6050_MBED_H
 #define MBED_MPU6050_MPU6050_MBED_H
-//main code follow by Chen chen
+//Main code Refer to Chenchen
 #include <cstdio>
 #include <cstdlib>
 #include "mbed.h"
