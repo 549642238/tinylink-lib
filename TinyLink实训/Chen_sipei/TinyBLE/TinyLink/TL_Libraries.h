@@ -27,7 +27,7 @@
 	#endif
 #endif
 //add by chen sipei
-#ifdef BLUETOOTH
+#ifdef GYRO
 	#if PLATFORM == 5 && BOARD == 1011
 		#if GYRO == MPU6050_GYRO
 			#include "MPU6050_Gyro_Gyro_TinyBLE.h"
