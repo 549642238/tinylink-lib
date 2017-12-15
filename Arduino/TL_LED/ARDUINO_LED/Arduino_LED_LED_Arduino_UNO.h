@@ -4,20 +4,21 @@
 #include <Arduino.h>
 #include "TL_Config.h"
 
-class Internal_LED
+class Arduino_LED_LED_Arduino_UNO
 {
 
 private:
-  int state;
-  const static int ledPin = 13;
+	int stateSig;
+	const static int ledPin = 13;
 
 public:
-  Internal_LED();
-  void toggle();
-  void turnOn();
-  void turnOff();
+	Arduino_LED_LED_Arduino_UNO();
+	void toggle();
+	void turnOn();
+	void turnOff();
+	const int state();		// 0 for OFF, 1 for ON
 };
 
-extern Internal_LED TL_LED;
+extern Arduino_LED_LED_Arduino_UNO TL_LED;
 
 #endif

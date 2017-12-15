@@ -3,17 +3,19 @@
 
 #include "rgb_lcd.h"
 
-class GROVE_LCD_RGB_DISPLAY{
+class Grove_LCD_RGB_Display_Arduino_Uno{
 private:
-	int state;
+	int init;
+	static char stateSig[17];
 	rgb_lcd lcd;
 public:
-	GROVE_LCD_RGB_DISPLAY();
+	Grove_LCD_RGB_Display_Arduino_Uno();
 	void show(const char* data);
 	void show(const String& data);
 	void clear();
+	const char* state();
 };
 
-extern GROVE_LCD_RGB_DISPLAY TL_Display;
+extern Grove_LCD_RGB_Display_Arduino_Uno TL_Display;
 
 #endif

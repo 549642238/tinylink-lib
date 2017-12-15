@@ -13,7 +13,6 @@
 
 extern void setup();
 extern void loop();
-Serial pc(USBTX, USBRX);
 
 int main(void){
 	setup();

@@ -1,12 +1,13 @@
 #ifndef MPU6050_GYRO_GYRO_TINYBLE_H
 #define MPU6050_GYRO_GYRO_TINYBLE_H
- 
+
 #include "mbed.h"
 #include "mbed_i2c.h"
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
 #include "nrf51.h"
 #include "nrf51_bitfields.h"
+
  
 
 #include "DFUService.h"
@@ -41,6 +42,7 @@ class MPU6050_GYRO_GYRO{
 }; 
  
 extern MPU6050_GYRO_GYRO TL_Gyro;
+
 
 
 #endif

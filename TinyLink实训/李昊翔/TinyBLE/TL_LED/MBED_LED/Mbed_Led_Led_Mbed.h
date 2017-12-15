@@ -6,23 +6,22 @@
 #include "mbed.h"
 #include "TL_Config.h"
 
-struct Mbed_Led_Led{
+class Mbed_Led_Led_T{
+public:
         DigitalOut led;
-        Mbed_Led_Led():led(p21){
+		Mbed_Led_Led_T():led(p21){
         }
         void turnOff(){
-                led = 0;
 				led = 1;
         }
         void turnOn(){
-                led = 1;
 				led = 0;
         }
         void toggle(){
-                //led = !led;
+              led = !led;
         }
 };
-
-extern struct Mbed_Led_Led TL_LED;
+typedef Mbed_Led_Led_T Mbed_Led_Led;
+extern  Mbed_Led_Led TL_LED;
 
 #endif

@@ -119,15 +119,82 @@
 	#endif
 #endif
 
+//Edit by zyx
 #ifdef BUZZER
 	#if BUZZER == GROVE_BUZZER
-		#include "Grove_Buzzer_Buzzer_Arduino_Uno.h"
+		#include "Grove_Buzzer_Buzzer_Arduino_UNO.h"
 	#endif
 #endif
 
 #ifdef SERIAL_TO_PARALLEL
 	#if SERIAL_TO_PARALLEL == _74HC595
 		#include "_74HC595_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef BUTTON
+	#if BUTTON == GROVE_BUTTON
+		#include "Grove_Button_Button_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef RELAY
+	#if RELAY == GROVE_MINI_FAN
+		#include "Grove_Mini_Fan_Relay_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef ATOMIZATION
+	#if ATOMIZATION == GROVE_WATER
+		#include "Grove_Water_Atomization_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef RECORDER
+	#if RECORDER == GROVE_RECORDER
+		#include "Grove_Recorder_Recorder_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef SPEAKER
+	#if SPEAKER == GROVE_SPEAKER
+		#include "Grove_Speaker_Speaker_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef SERVO
+	#if SERVO == GROVE_SERVO
+		#include "Grove_Servo_Servo_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef DMX512
+	#if DMX512 == GROVE_DMX512
+		#include "Grove_DMX512_DMX512_Arduino_Uno.h"
+	#endif
+#endif
+
+#ifdef IRREV
+	#if IRREV == GROVE_IRREV
+		#include "Grove_IRRev_IRRev_Arduino_UNO.h"
+	#endif
+#endif
+
+#ifdef IRSEND
+	#if IRSEND == GROVE_IRSEND
+		#include "Grove_IRSend_IRSend_Arduino_UNO.h"
+	#endif
+#endif
+
+#ifdef RTC
+	#if RTC == GROVE_RTC
+		#include "Grove_RTC_RTC_Arduino_UNO.h"
+	#endif
+#endif
+
+#ifdef MP3
+	#if MP3 == GROVE_MP3
+		#include "Grove_MP3_MP3_Arduino_UNO.h"
 	#endif
 #endif
 

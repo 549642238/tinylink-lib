@@ -8,21 +8,18 @@
 #include <SPI.h>
 #include <SD.h>
 
-class SD_Card
-{
-
+class SD_Card{
 private:
-  TL_File myFile;
-
+	TL_File myFile;
 public:
-  SD_Card();
-  bool begin();
-  bool exists(String path);
-  bool remove(String path);
-  bool mkdir(String path);
-  bool rmdir(String path);
-  char* StoC(String s);
-  TL_File open(String path, String mode = "r");
+	SD_Card();
+	bool begin();
+	bool exists(String path);
+	bool remove(String path);
+	bool mkdir(String path);
+	bool rmdir(String path);
+	char* StoC(String s);
+	TL_File open(String path, String mode = "r");
 };
 
 extern SD_Card TL_Storage;

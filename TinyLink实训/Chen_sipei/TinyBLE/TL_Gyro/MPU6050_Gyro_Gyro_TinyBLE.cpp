@@ -1,3 +1,4 @@
+
 #include"MPU6050_Gyro_Gyro_TinyBLE.h"
 
 MPU6050_GYRO_GYRO TL_Gyro;
@@ -46,3 +47,4 @@ void MPU6050_GYRO_GYRO::read(){
      dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors,
                               &more);
 }
+

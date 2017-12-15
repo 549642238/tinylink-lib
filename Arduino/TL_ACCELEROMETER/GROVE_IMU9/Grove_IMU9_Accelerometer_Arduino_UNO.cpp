@@ -1,10 +1,10 @@
 #include "Grove_IMU9_Accelerometer_Arduino_UNO.h"
 
-Grove_9DOF_Accelerometer::Grove_9DOF_Accelerometer(){
+Grove_IMU9_Accelerometer_Arduino_UNO::Grove_IMU9_Accelerometer_Arduino_UNO():accelgyro(),I2C_M(),status(0),ax(0),ay(0),az(0),state(0){
 	state = 0;
 }
 
-int Grove_9DOF_Accelerometer::read(){
+int Grove_IMU9_Accelerometer_Arduino_UNO::read(){
 	if (state == 0){
 		Wire.begin();
 		accelgyro.initialize();
@@ -25,19 +25,16 @@ int Grove_9DOF_Accelerometer::read(){
 	}
 }
 
-double Grove_9DOF_Accelerometer::data_x(){
+double Grove_IMU9_Accelerometer_Arduino_UNO::data_x(){
 	return (double) ax / 16384;
 }
 
-double Grove_9DOF_Accelerometer::data_y(){
+double Grove_IMU9_Accelerometer_Arduino_UNO::data_y(){
 	return (double) ay / 16384;
 }
 
-double Grove_9DOF_Accelerometer::data_z(){
+double Grove_IMU9_Accelerometer_Arduino_UNO::data_z(){
 	return (double) az / 16384;
 }
 
-
-#if ACCELEROMETER == GROVE_IMU9
-	Grove_9DOF_Accelerometer TL_Accelerometer;
-#endif
+Grove_IMU9_Accelerometer_Arduino_UNO TL_Accelerometer;
