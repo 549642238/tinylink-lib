@@ -24,20 +24,26 @@ class MPU6050_GYRO_GYRO{
             short gyro[3], accel[3], sensors;
             long quat[4];
             unsigned char more = 1;
+            int state;
+            unsigned short gyro_fsr = 2000;
     public:
+        //init GYRO
         MPU6050_GYRO_GYRO();
+        //setDPS:250 or 500 or 1000 or 2000
+        int setFSR(unsigned short fsr);
+        /*read GYRO data if success return 0, 
+            none data return -1, and set data cache 0*/
+        int read();
         
-        void read();
-
-        short data_x(){
-            return gyro[0];
-        }
-        short data_y(){
-            return gyro[1];
-        }
-        short data_z(){
-            return gyro[2];
-        }  
+        double data_x(){
+            return (double)gyro[0]*gyro_fsr/32768;
+            }
+        double data_y(){
+            return (double)gyro[1]*gyro_fsr/32768;
+            }
+        double data_z(){
+            return (double)gyro[2]*gyro_fsr/32768;
+            }  
 }; 
  
 extern MPU6050_GYRO_GYRO TL_Gyro;
