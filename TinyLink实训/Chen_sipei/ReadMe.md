@@ -1,9 +1,9 @@
 ----2017/12/8----
 -
-1.修改了文件路径，分为Arduino和TinyBLE\<br>
-2.电机pin改为宏编译\<br>
-3.跑通了官方TinyBLE——MPU代码\<br>
-4.尝试封装Gyro没有成功\<br>
+1.修改了文件路径，分为Arduino和TinyBLE\
+2.电机pin改为宏编译\
+3.跑通了官方TinyBLE——MPU代码\
+4.尝试封装Gyro没有成功\
 
 ----2017/12/15----
 -
