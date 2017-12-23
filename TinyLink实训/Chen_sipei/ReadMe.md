@@ -16,7 +16,7 @@
 
 ----2017/12/22
 -
-1.add function: \ 
+1.add function: \
  int setFSR(unsigned short)  \
 @brief      Set the gyro full-scale range.\
 @param[in]  fsr Desired full-scale range.(250/500/1000/2000)\
