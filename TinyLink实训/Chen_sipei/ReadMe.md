@@ -22,9 +22,10 @@
 param[in]  250 or 500 or 1000 or 2000*/
         int setFSR(unsigned short fsr);        
   ```
-2.tanslate hardware output(x,y,z) into Degree Per Second: \
+2.tanslate hardware output(x,y,z) into Degree Per Second: 
    ```c++
     /*gyro_fsr means current full-scale range*/
     return (double)gyro[0]*gyro_fsr/32768;
    ```
-   
+ 
+3.next week try to part read() function and read raw data from reg address
