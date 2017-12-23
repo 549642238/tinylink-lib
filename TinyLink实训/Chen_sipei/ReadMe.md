@@ -13,10 +13,11 @@
 4.是否需要重置读数？\
 5.是否可以设置陀螺仪读取频率？\
 6.按照API给Arduino_Motor增加了state函数\
-
-----2017/12/22
 -
-1.add function: int setFSR(unsign short)/
+----2017/12/22
+
+1.add function:\ 
+  int setFSR(unsigned short)
  *  @brief      Set the gyro full-scale range.
  *  @param[in]  fsr Desired full-scale range.(250/500/1000/2000)
  *  @return     0 if successful.
