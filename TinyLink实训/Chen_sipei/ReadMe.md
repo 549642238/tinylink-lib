@@ -18,10 +18,12 @@
 -
 1.add function: \
  ```c++
- int setFSR(unsigned short)```  \
-@brief      Set the gyro full-scale range.\
-@param[in]  fsr Desired full-scale range.(250/500/1000/2000)\
-@return     0 if successful.\
+/*set Degree Per Secong
+param[in]  250 or 500 or 1000 or 2000*/
+        int setFSR(unsigned short fsr);        
+  ```
 2.tanslate hardware output(x,y,z) into Degree Per Second\
-    `return   (double)gyro[0]*gyro_fsr/32768;`  \
+    ```
+    return   (double)gyro[0]*gyro_fsr/32768;
+    ```
     gyro_fsr  means current full-scale range
