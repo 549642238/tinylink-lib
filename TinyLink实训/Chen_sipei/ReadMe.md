@@ -20,6 +20,6 @@
   int setFSR(unsigned short)
  *  @brief      Set the gyro full-scale range.
  *  @param[in]  fsr Desired full-scale range.(250/500/1000/2000)
- *  @return     0 if successful.
+ *  @return     0 if successful.\
 2.tanslate hardware output(x,y,z) into Degree Per Second\
  * @return x  return (double)gyro[0]*gyro_fsr/32768;  /*gyro_fsr  means current full-scale range&*/
