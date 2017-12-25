@@ -1,4 +1,4 @@
 *.map
-/TL_BUTTON/
-/TL_LED/
-/TL_TIME/
+TL_BUTTON/
+TL_LED/
+TL_TIME/
