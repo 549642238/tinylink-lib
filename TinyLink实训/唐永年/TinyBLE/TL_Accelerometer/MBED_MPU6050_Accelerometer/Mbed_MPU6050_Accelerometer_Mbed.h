@@ -29,7 +29,11 @@ static signed char board_orientation[9] = {
 //返回数据类型
 typedef struct
 {
-    short accel[3];//加速度
+    public:
+	short accel[3];//加速度
+	short gyro[3];
+	int state;
+	unsigned char new_gyo;//1-数据有效
     unsigned char new_accel;//1-数据有效
     //想要获取四元数和欧拉角pitch,yaw,roll，Dmp_En =1
     long quat[4];
@@ -42,12 +46,10 @@ typedef struct
     unsigned char dmp_en;
 }AccData_Typedef;
 
-unsigned short inv_orientation_matrix_to_scalar(const signed char *mtx);
+//static unsigned short inv_orientation_matrix_to_scalar(const signed char *mtx);
 
-class Mbed_MPU6050_Accelerometer_T {
+class Mbed_MPU6050_Accelerometer{
 public:
-    Mbed_MPU6050_Accelerometer_T(){
-    }
     /*初始化加速度传感器
     sample_rate:采样频率 范围4HZ~1KHZ
     accel_fsr:加速度传感器量程2/4/8/16g
@@ -57,99 +59,18 @@ public:
     1-传感器初始化失败
     */
 	int init(unsigned short sample_rate,unsigned char accel_fsr,
-        unsigned short gyro_fsr,unsigned char Dmp_En)
-    {
-        mbed_i2c_clear(MPU6050_SDA, MPU6050_SCL);
-        if (mpu_init(0)) 
-        {
-            return 1;
-        }
-        //设置所需要的传感器陀螺仪和加速度
-        mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL);
-        //使能FIFO,采样完成后，自动将数据放入FIFO中
-        mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL);
-        if(Dmp_En == 0)
-        {
-            //设置采集样率
-            mpu_set_sample_rate(sample_rate);
-            mpu_set_gyro_fsr(gyro_fsr);
-            mpu_set_accel_fsr(accel_fsr);
-            //验证是否配置成功
-            unsigned char t_accel_fsr;
-            unsigned short t_sample_rate, t_gyro_fsr;
-            mpu_get_sample_rate(&t_sample_rate);
-            mpu_get_gyro_fsr(&t_gyro_fsr);
-            mpu_get_accel_fsr(&t_accel_fsr);
-            if(gyro_fsr!=t_gyro_fsr||accel_fsr!=t_accel_fsr||
-            t_sample_rate!=sample_rate)
-            {
-                return 2;
-            }            
-        }
-        else
-        {
-            mpu_set_sample_rate(DEFAULT_MPU_HZ);
-            //DMP是MPU加速度传感器特有的功能，其它公司的传感器不支持直接得出四元数
-            //因此例程只输出返回加速度和陀螺仪传感器原始数据
-            //加载dmp固件,mpu6050内部集成数字运动处理器
-            dmp_load_motion_driver_firmware();
-            //设置陀螺仪方向
-            dmp_set_orientation(
-            inv_orientation_matrix_to_scalar(board_orientation));
-            //
-            // dmp_register_tap_cb(tap_cb);
-            // dmp_register_android_orient_cb(android_orient_cb);
-            uint16_t dmp_features = DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
-                               DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
-                               DMP_FEATURE_GYRO_CAL;
-            //设置速率
-            dmp_enable_feature(dmp_features);
-            dmp_set_fifo_rate(DEFAULT_MPU_HZ);
-            mpu_set_dmp_state(1);            
-        }
-        return 0;
-    } 
+        unsigned short gyro_fsr,unsigned char Dmp_En);
     /*
     Dmp_En:1-使能DMP，直接获得姿态信息，返回四元数
     */
-    AccData_Typedef read(uint8_t Dmp_En)
-    {
-        AccData_Typedef tAccData; 
-        unsigned long sensor_timestamp;
-        if(Dmp_En == 0)
-        {
-            //调用该函数每次只能读出一个采样值
-            mpu_read_fifo(tAccData.gyro, tAccData.accel,&sensor_timestamp,
-            (unsigned char *)&tAccData.sensors,&tAccData.more);  
-            if (tAccData.sensors & INV_XYZ_ACCEL)//加速度值有效
-            {
-                tAccData.new_accel = 1;
-            }
-        } 
-        if (sensors & INV_XYZ_ACCEL) return 0;
-        return -1;
-    }
-protected:
-    #if 0
-    double data_x()
-    {
-        return (double) accel[0] / 16384;
-    }
-	double data_y()
-    {
-        return (double) accel[1] / 16384;
-    }
-	double data_z()
-    {
-        return (double) accel[2] / 16384;
-    }
-    #endif
-
-private:
+    AccData_Typedef read(uint8_t Dmp_En);
+    double data_x();
+	double data_y();
+	double data_z();
+	short x,y,z;
 };
+extern AccData_Typedef mAccData;
 
-
-typedef Mbed_MPU6050_Accelerometer_T Mbed_MPU6050_Accelerometer;
 extern Mbed_MPU6050_Accelerometer TL_Accelerometer;
 
 #endif
