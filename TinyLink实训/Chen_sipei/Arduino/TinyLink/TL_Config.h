@@ -16,7 +16,7 @@
 #define SOIL_HUMIDITY_ANALOG A2
 
 //add FAN Configure by ChenSipei
-#define FAN_DIGITAL_PIN 8
-#define FAN GROVE_MINI_FAN
+#define MOTOR_DIGITAL_PIN 8
+#define FAN GROVE_MINI_MOTOR
 
 #endif

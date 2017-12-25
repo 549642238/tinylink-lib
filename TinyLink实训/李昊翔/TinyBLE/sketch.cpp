@@ -1,19 +1,20 @@
 #include "TL_Libraries.h"
 
-void setup(){
-	TL_Bluetooth.init();
-	printf("Bluetooth init succeed!\n");
+void setup() {
+	TL_Bluetooth.init("My device");
 }
-
-void loop(){
-	char data[20] = "";
-		TL_Bluetooth.recv(data);
-		printf("data=%s\n",data);
-		if(!strcmp(data,"on")) {
+void loop() {
+	char buf[20];
+	if (TL_Bluetooth.recv(buf) == 0) {
+		if (strcmp(buf, "on") == 0) {
 			TL_LED.turnOn();
+			TL_Bluetooth.send("Light On");
 		}
-		else if(!strcmp(data, "off")) {
+		else if (strcmp(buf, "off") == 0) {
 			TL_LED.turnOff();
+			TL_Bluetooth.send("Light Off");
 		}
+	}
+	TL_Time.delayMillis(1000);
 }
 
