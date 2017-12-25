@@ -29,3 +29,8 @@ param[in]  250 or 500 or 1000 or 2000*/
    ```
  
 3.next week try to part read() function and read raw data from reg address
+
+----2017/12/25
+-
+1.part Gyro and Accelerate\
+2.upload test sketch.cpp
