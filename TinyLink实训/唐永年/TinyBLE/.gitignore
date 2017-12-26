@@ -2,3 +2,5 @@
 TL_BUTTON/
 TL_LED/
 TL_TIME/
+*.hg
+*.temp/
