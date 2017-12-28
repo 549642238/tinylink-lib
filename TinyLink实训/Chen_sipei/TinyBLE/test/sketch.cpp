@@ -4,8 +4,8 @@ short x,y,z;
 
 void setup(){
 	TL_Gyro.setFSR(500);
-	
 	TL_Bluetooth.init("My device");
+	TL_Accelerometer.setFSR(2);
 }
 
 void loop(){
@@ -15,7 +15,7 @@ void loop(){
 	y=TL_Gyro.data_y();
 	z=TL_Gyro.data_z();
 	printf("Gyro=x=%d,y=%d,z=%d \n",x,y,z);
-	TL_Accelerometer.read(1);
+	TL_Accelerometer.read();
 	x=TL_Accelerometer.data_x();
 	y=TL_Accelerometer.data_y();
 	z=TL_Accelerometer.data_z();
