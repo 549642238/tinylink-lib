@@ -48,7 +48,6 @@ unsigned short inv_orientation_matrix_to_scalar(
 
 Mbed_MPU6050_Accelerometer TL_Accelerometer;
 
-Serial pcc(p9, p11);
 int Mbed_MPU6050_Accelerometer::init(unsigned short sample_rate,unsigned char accel_fsr,
         unsigned short gyro_fsr,unsigned char Dmp_En){
         mbed_i2c_clear(MPU6050_SDA, MPU6050_SCL);
