@@ -10,6 +10,7 @@ MPU6050_GYRO_GYRO::MPU6050_GYRO_GYRO() {
 	if (mpu_init(0)) {
 	    printf("failed to initialize mpu6050\r\n");
 	}
+	gyro_fsr = 2000;
 
 	//唤醒传感器
 	mpu_set_sensors(INV_XYZ_GYRO);
@@ -49,6 +50,12 @@ short MPU6050_GYRO_GYRO::data_y(){
 
 short MPU6050_GYRO_GYRO::data_z(){
 	return gyro[2];
+}
+
+int MPU6050_GYRO_GYRO::setFsr(unsigned short fsr) {
+	if(mpu_set_gyro_fsr(fsr)) return 1;
+	gyro_fsr = fsr;
+	return 0;
 }
 
 static inline unsigned short inv_row_2_scale(const signed char *row)

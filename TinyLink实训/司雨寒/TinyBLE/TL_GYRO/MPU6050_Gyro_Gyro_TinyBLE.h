@@ -41,12 +41,14 @@ private:
 	short gyro[3], accel[3], sensors;
 	long quat[4];
 	unsigned char more;
+	unsigned short gyro_fsr;
 public:
 	MPU6050_GYRO_GYRO();
 	void read();
 	short data_x();
 	short data_y();
 	short data_z();
+	int setFsr(unsigned short fsr);
 }; 
 
 extern MPU6050_GYRO_GYRO TL_Gyro;
