@@ -6,15 +6,13 @@
 #include "mbed.h"
 #include "TL_Config.h"
 
-struct Mbed_Time_Time
+class Mbed_Time_Time_T
 {
-	//¶¨ÒåÈı¸öÑÓÊ±º¯Êı£¬·Ö±ğÑÓÊ±sÃë£¬msºÁÃë£¬usÎ¢Ãë 
-	/*
-	void delay_s(unsigned long s)
-	{
-		wait(s);
-	}
-	*/
+	public:
+	Mbed_Time_Time_T()
+	{}
+	//å®šä¹‰ä¸‰ä¸ªå»¶æ—¶å‡½æ•°ï¼Œåˆ†åˆ«å»¶æ—¶sç§’ï¼Œmsæ¯«ç§’ï¼Œuså¾®ç§’ 
+
 	void delayMillis(unsigned long ms)
 	{
 		wait_ms(ms);
@@ -24,29 +22,27 @@ struct Mbed_Time_Time
 		wait_us(us);
 	}
 	
-	//¶¨ÒåÈı¸ö¼ÆÊ±º¯Êı£¬Í³¼Æ³ÌĞò´Ó¿ªÊ¼ÔËĞĞµ½½áÊøÊ±¼ä£¬µ¥Î»·Ö±ğÎªÃë£¬ºÁÃë£¬Î¢Ãë 
-	/*
-	unsigned long sFromStart()
-	{
-		Timer T;
-		T.start();
-		unsigned long t = T.read();
-	}
-	*/
+	//å®šä¹‰ä¸‰ä¸ªè®¡æ—¶å‡½æ•°ï¼Œç»Ÿè®¡ç¨‹åºä»å¼€å§‹è¿è¡Œåˆ°ç»“æŸæ—¶é—´ï¼Œå•ä½åˆ†åˆ«ä¸ºç§’ï¼Œæ¯«ç§’ï¼Œå¾®ç§’ 
+
 	unsigned long millisFromStart()
 	{
 		Timer T;
 		T.start();
 		unsigned long t = T.read_ms();
+		T.stop();
+		return t;
 	}
 	unsigned long microsFromStart()
 	{
 		Timer T; 
 		T.start();
 		unsigned long t = T.read_us();
+		T.stop();
+		return t;
 	}		
 };
 
-extern struct Mbed_Time_Time TL_TIME;
+typedef Mbed_Time_Time_T Mbed_Time_Time;
+extern Mbed_Time_Time TL_Time;
 
 #endif
