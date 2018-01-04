@@ -2,18 +2,19 @@ TinBLE mould instrument
 ==
 The TL_Gyro module provides some basic functions for gyroscope sensor.
 --
+
 #read()
 
 Description\
 Reads gyroscope data once from the sensor and stores it in the buffer.(the reading operation is blocking)\
-##Syntax\
-###int read()
-Parameters\
-none\
-Return\
-int: 0 if successes, -1 if fail\
-Usage\
-TL_Gyro.read()\
+*Syntax
+ int read()\
+*Parameters\
+ none\
+*Return\
+ int: 0 if successes, -1 if fail\
+*Usage\
+ TL_Gyro.read()\
 data_x()
 
 Description
