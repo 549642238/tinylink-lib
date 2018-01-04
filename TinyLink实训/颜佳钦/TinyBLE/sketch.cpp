@@ -19,4 +19,5 @@ void loop()
 	y = TL_Accelerometer.data_y();
 	z = TL_Accelerometer.data_z();
 	pc.printf("x=%d y=%d z=%d\n",x,y,z);
+	wait(2);
 }
