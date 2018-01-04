@@ -1,43 +1,62 @@
-----2017/12/8----
-1.修改了文件路径，分为Arduino和TinyBLE
-2.电机pin改为宏编译
-3.跑通了官方TinyBLE——MPU代码
-4.尝试封装Gyro没有成功
+The TL_Gyro module provides some basic functions for gyroscope sensor.、
 
-----2017/12/15----
-1.封装了Gyro的read(),data_x,data_y,data_z函数
-2.用test文件夹里的main.cpp成功读取陀螺仪读数
-3.内部还没有把加速度和陀螺仪读取分开4
-4.是否需要重置读数？
-5.是否可以设置陀螺仪读取频率？
-----2017/12/8----
--
-1.修改了文件路径，分为Arduino和TinyBLE\
-2.电机pin改为宏编译\
-3.跑通了官方TinyBLE——MPU代码\
-4.尝试封装Gyro没有成功
+#read()
 
-----2017/12/15----
--
-1.封装了Gyro的read(),data_x,data_y,data_z函数\
-2.用test文件夹里的main.cpp成功读取陀螺仪读数\
-3.内部还没有把加速度和陀螺仪读取分开4\
-4.是否需要重置读数？\
-5.是否可以设置陀螺仪读取频率？\
-6.按照API给Arduino_Motor增加了state函数
+Description
+Reads gyroscope data once from the sensor and stores it in the buffer.(the reading operation is blocking)
+Syntax
+int read()
+Parameters
+none
+Return
+int: 0 if successes, -1 if fail
+Usage
+TL_Gyro.read()
+data_x()
 
-----2017/12/22
--
-1.add configure function:
- ```c++
-/*set Degree Per Secong
-param[in]  250 or 500 or 1000 or 2000*/
-        int setFSR(unsigned short fsr);        
-  ```
-2.tanslate hardware output(x,y,z) into Degree Per Second: 
-   ```c++
-    /*gyro_fsr means current full-scale range*/
-    return (double)gyro[0]*gyro_fsr/32768;
-   ```
- 
-3.next week try to part read() function and read raw data from reg address
+Description
+Reads gyroscope data in x direction from the buffer
+Syntax
+double data_x()
+Parameters
+none
+Return
+double: gyroscope data in x direction stored in the buffer
+Usage
+TL_Gyro.data_x()
+data_y()
+
+Description
+Reads gyroscope data in y direction from the buffer
+Syntax
+double data_y()
+Parameters
+none
+Return
+double: gyroscope data in y direction stored in the buffer
+Usage
+TL_Gyro.data_y()
+data_z()
+
+Description
+Reads gyroscope data in z direction from the buffer
+Syntax
+double data_z()
+Parameters
+none
+Return
+double: gyroscope data in z direction stored in the buffer
+Usage
+TL_Gyro.data_z()
+Example
+void setup() {
+    TL_Serial.begin(9600);
+}
+
+void loop() {
+    TL_Gyro.read();
+    TL_Serial.print("Gyroscope data is ");
+    String data = String(TL_Gyro.data_x())+","+String(TL_Gyro.data_y())+","+String(TL_Gyro.data_z());
+    TL_Serial.println(data);
+    TL_Time.delayMillis(1000);   
+}
