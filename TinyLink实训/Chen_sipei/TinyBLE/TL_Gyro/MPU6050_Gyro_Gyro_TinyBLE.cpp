@@ -8,9 +8,9 @@ MPU6050_GYRO_GYRO::MPU6050_GYRO_GYRO(){
 
     mpu_init(0); 
     /* Get/set hardware configuration. Start gyro. */
-    mpu_set_sensors(INV_XYZ_GYRO);
+    mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL);
     /* Push gyro data into the FIFO. */
-    mpu_configure_fifo(INV_XYZ_GYRO);
+    mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL);
     mpu_set_sample_rate(DEFAULT_MPU_HZ);
     
     /* Read back configuration in case it was set improperly. */
