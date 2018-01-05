@@ -9,37 +9,13 @@
 class Mbed_Time_Time_T
 {
 	public:
-	Mbed_Time_Time_T()
-	{}
-	//定义三个延时函数，分别延时s秒，ms毫秒，us微秒 
+	Mbed_Time_Time_T(){}
 
-	void delayMillis(unsigned long ms)
-	{
-		wait_ms(ms);
-	}
-	void delayMicros(unsigned long us)
-	{
-		wait_us(us);
-	}
-	
-	//定义三个计时函数，统计程序从开始运行到结束时间，单位分别为秒，毫秒，微秒 
+	void delayMillis(unsigned long ms);
+	void delayMicros(unsigned long us);
 
-	unsigned long millisFromStart()
-	{
-		Timer T;
-		T.start();
-		unsigned long t = T.read_ms();
-		T.stop();
-		return t;
-	}
-	unsigned long microsFromStart()
-	{
-		Timer T; 
-		T.start();
-		unsigned long t = T.read_us();
-		T.stop();
-		return t;
-	}		
+	unsigned long millisFromStart();
+	unsigned long microsFromStart();		
 };
 
 typedef Mbed_Time_Time_T Mbed_Time_Time;

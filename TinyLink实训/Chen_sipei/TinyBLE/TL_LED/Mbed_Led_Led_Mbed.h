@@ -11,15 +11,9 @@ public:
         DigitalOut led;
 		Mbed_Led_Led_T():led(p21){
         }
-        void turnOff(){
-				led = 1;
-        }
-        void turnOn(){
-				led = 0;
-        }
-        void toggle(){
-              led = !led;
-        }
+        void turnOff();
+        void turnOn();
+        void toggle();
 };
 typedef Mbed_Led_Led_T Mbed_Led_Led;
 extern  Mbed_Led_Led TL_LED;
