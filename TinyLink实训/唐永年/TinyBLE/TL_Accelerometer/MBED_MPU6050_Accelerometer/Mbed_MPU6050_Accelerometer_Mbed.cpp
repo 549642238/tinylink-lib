@@ -1,0 +1,43 @@
+#include <cstdio>
+#include <cstdlib>
+#include "Mbed_MPU6050_Accelerometer_Mbed.h"
+
+Mbed_MPU6050_Accelerometer::Mbed_MPU6050_Accelerometer(){
+
+        mbed_i2c_clear(MPU6050_SDA, MPU6050_SCL);
+	mbed_i2c_init(MPU6050_SDA, MPU6050_SCL);
+
+        if(mpu_init(0)==0)
+        //设置所需要的传感器陀螺仪和加速度
+        mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL);
+        //使能FIFO,采样完成后，自动将数据放入FIFO中
+        mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL);
+        mpu_set_sample_rate(DEFAULT_MPU_HZ);			
+        mpu_set_accel_fsr(accel_fsr);
+} 
+
+
+int Mbed_MPU6050_Accelerometer::read()
+{
+       return mpu_get_accel_reg(accel,&sensor_timestamp);
+}
+
+int Mbed_MPU6050_Accelerometer::setFSR(unsigned short fsr){
+	if(mpu_set_accel_fsr(fsr)) return -1;
+	else {
+		accel_fsr = fsr;
+		return 0;
+	}
+}
+//三个加速度分量均以重力加速度g的倍数为单位
+double Mbed_MPU6050_Accelerometer::data_x(){
+        return (double) accel[0] * accel_fsr/ 32768;
+}
+double Mbed_MPU6050_Accelerometer::data_y(){
+        return (double) accel[1] * accel_fsr/ 32768;
+}
+double Mbed_MPU6050_Accelerometer::data_z(){
+        return (double) accel[2] * accel_fsr/ 32768;
+}
+
+Mbed_MPU6050_Accelerometer TL_Accelerometer;
