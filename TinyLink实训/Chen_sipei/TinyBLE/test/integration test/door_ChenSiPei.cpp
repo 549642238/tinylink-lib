@@ -3,7 +3,9 @@
 short Gx,Gy,Gz,Ax,Ay,Az;
 int door=0,cnt=0;
 void setup(){
-	TL_Gyro.setFSR(500);
+	TL_Gyro.setFSR(1000);
+	TL_Accelerometer.setFSR(4);
+	TL_Bluetooth.init("door status");
 }
 
 void loop(){
@@ -19,22 +21,21 @@ void loop(){
 	Ay=TL_Accelerometer.data_y();
 	Az=TL_Accelerometer.data_z();
 	
-	if(Gz>100||Ax>2||Ay>2||Az>2){
+	if(Gz>100||Ax>1||Ay>1||Az>1){
 		TL_LED.turnOn();
-		printf("Gyro=x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
-		printf("accel=x=%d,y=%d,z=%d \n",Ax,Ay,Az);
-		if(door){
-			printf("Door Open\n");
-			door=0;
-		}		
+		printf("Gyro x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
+		printf("accel x=%d,y=%d,z=%d \n",Ax,Ay,Az);
+		printf("Door Open\n");
+		TL_Bluetooth.send("door open");			
 	}
-	else if(Gz<-100||Ax<-2||Ay<-2||Az<-2){
+	else if(Gz<-100||Ax<-1||Ay<-1||Az<-1){
 		TL_LED.turnOff();
-		printf("Gyro=x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
-		printf("accel=x=%d,y=%d,z=%d \n",Ax,Ay,Az);
+		printf("Gyro x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
+		printf("accel x=%d,y=%d,z=%d \n",Ax,Ay,Az);
 		printf("Door Close\n");
-		door=1;
+		
+		TL_Bluetooth.send("door close");
 	}
 	
-	TL_TIME.delayMillis(1000);
+	TL_Time.delayMillis(1000);
 }
