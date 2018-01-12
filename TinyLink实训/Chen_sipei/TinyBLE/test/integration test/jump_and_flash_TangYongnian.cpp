@@ -20,7 +20,7 @@ void loop()
     x = TL_Accelerometer.data_x();
     y = TL_Accelerometer.data_y();
     z = TL_Accelerometer.data_z();
-    //如果加速计读数发生变化,LED等闪烁三次
+    //如果加速计读数发生变化,LED闪烁三次
     if(x != prex || y != prey || z != prez)
     {
 		for(int i = 0 ; i < 3 ; ++ i)
