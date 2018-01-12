@@ -7,13 +7,18 @@
 #include "TL_Config.h"
 
 class Mbed_Led_Led_T{
-public:
+
+		
+		
+	public:
+		int stateSig;
         DigitalOut led;
 		Mbed_Led_Led_T():led(p21){
         }
         void turnOff();
         void turnOn();
         void toggle();
+        int state();
 };
 typedef Mbed_Led_Led_T Mbed_Led_Led;
 extern  Mbed_Led_Led TL_LED;
