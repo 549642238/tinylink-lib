@@ -22,7 +22,6 @@ class MPU6050_GYRO_GYRO{
     private:
     unsigned long sensor_timestamp;
             short gyro[3];
-            int state;
             unsigned short gyro_fsr, gyro_rate;
     public:
         /*init GYRO*/
@@ -40,3 +39,4 @@ class MPU6050_GYRO_GYRO{
 extern MPU6050_GYRO_GYRO TL_Gyro;
 
 #endif
+
