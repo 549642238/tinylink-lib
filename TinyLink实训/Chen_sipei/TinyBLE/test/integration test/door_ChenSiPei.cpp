@@ -1,5 +1,7 @@
 #include "TL_Libraries.h"
-
+#define UART_TX     p9
+#define UART_RX     p11
+Serial pc(UART_TX, UART_RX,19200);
 short Gx,Gy,Gz,Ax,Ay,Az;
 int door=0,cnt=0;
 void setup(){
@@ -10,7 +12,7 @@ void setup(){
 
 void loop(){
 	cnt++;
-	printf("%d\n",cnt);
+	pc.printf("%d\n",cnt);
 	TL_Gyro.read();
 	Gx=TL_Gyro.data_x();
 	Gy=TL_Gyro.data_y();
@@ -23,16 +25,16 @@ void loop(){
 	
 	if(Gz>100||Ax>1||Ay>1||Az>1){
 		TL_LED.turnOn();
-		printf("Gyro x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
-		printf("accel x=%d,y=%d,z=%d \n",Ax,Ay,Az);
-		printf("Door Open\n");
+		pc.printf("Gyro x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
+		pc.printf("accel x=%d,y=%d,z=%d \n",Ax,Ay,Az);
+		pc.printf("Door Open\n");
 		TL_Bluetooth.send("door open");			
 	}
 	else if(Gz<-100||Ax<-1||Ay<-1||Az<-1){
 		TL_LED.turnOff();
-		printf("Gyro x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
-		printf("accel x=%d,y=%d,z=%d \n",Ax,Ay,Az);
-		printf("Door Close\n");
+		pc.printf("Gyro x=%d,y=%d,z=%d \n",Gx,Gy,Gz);
+		pc.printf("accel x=%d,y=%d,z=%d \n",Ax,Ay,Az);
+		pc.printf("Door Close\n");
 		
 		TL_Bluetooth.send("door close");
 	}
