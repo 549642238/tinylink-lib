@@ -3,7 +3,7 @@
 #define UART_RX     p11
 Serial pc(UART_TX, UART_RX,19200);
 short Gx,Gy,Gz,Ax,Ay,Az;
-int door=0,cnt=0;
+int cnt=0;
 void setup(){
 	TL_Gyro.setFSR(1000);
 	TL_Accelerometer.setFSR(4);
